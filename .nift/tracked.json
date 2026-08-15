@@ -1,0 +1,54 @@
+{
+  "tracked": [
+    {
+      "name": "/",
+      "title": "Very fast TypeScript compilation",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "docs",
+      "title": "Docs",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "getting-started",
+      "title": "Getting started",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "cli",
+      "title": "CLI and tsconfig",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "language-support",
+      "title": "Language support",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "modules-tsx",
+      "title": "Modules and TSX",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "architecture",
+      "title": "Architecture",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "benchmarks",
+      "title": "Benchmarks",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "battle-tested",
+      "title": "Battle tested",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "ai-opinion",
+      "title": "AI opinion",
+      "template": "templates/template.html"
+    }
+  ]
+}

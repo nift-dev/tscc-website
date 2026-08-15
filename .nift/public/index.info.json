@@ -1,0 +1,24 @@
+{
+  "name": "/",
+  "title": "Very fast TypeScript compilation",
+  "template": "templates/template.html",
+  "content": "content/index.html",
+  "output": "public/index.html",
+  "minify": false,
+  "minify-version": 0,
+  "dependencies": [
+    "content/index.html",
+    "templates/head.html",
+    "templates/template.html"
+  ],
+  "reqs": [
+    "public/ai-opinion.html",
+    "public/assets/css/style.css",
+    "public/assets/js/script.js",
+    "public/battle-tested.html",
+    "public/benchmarks.html",
+    "public/docs.html",
+    "public/getting-started.html",
+    "public/index.html"
+  ]
+}

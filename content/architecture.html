@@ -1,0 +1,21 @@
+<div class="doc"><aside class="side"><b>Start</b><a href="@pathto('docs')">Overview</a><a href="@pathto('getting-started')">Getting started</a><a href="@pathto('cli')">CLI &amp; tsconfig</a><b>Compiler</b><a href="@pathto('language-support')">Language support</a><a href="@pathto('modules-tsx')">Modules &amp; TSX</a><a href="@pathto('architecture')">Architecture</a><b>Evaluation</b><a href="@pathto('benchmarks')">Benchmarks</a><a href="@pathto('battle-tested')">Battle tested</a><a href="@pathto('ai-opinion')">AI opinion</a></aside><article><div class="ey">Design</div><h1>Architecture: optimize the hot path without losing compiler boundaries</h1>
+<p class="lead">tscc's performance comes from doing less work and moving it through a small native pipeline—not from one isolated micro-optimization. The architecture is deliberately split so missing compiler capabilities can be added without replacing the entire core.</p>
+<h2>Major components</h2><pre><code class="language-plaintext">SourceFile      source bytes + line mapping
+Lexer           lexical tokens
+Parser          syntax recognition + erasure/replacements
+Transpiler      runtime transforms + output application
+Module graph    relative project discovery
+Config          tsconfig subset
+Diagnostics     attributed errors
+CLI             tsc-like user boundary</code></pre>
+<h2>Lex once where possible</h2>
+<p>An earlier project implementation lexed while building the graph and then lexed again while transpiling. Benchmarks caught the many-file regression. The current streaming queue loads and lexes a source once, discovers dependencies from that token stream, transpiles it and queues unseen modules.</p>
+<h2>Replacement-based emission</h2>
+<p>Much of TypeScript transpilation is deletion: type annotations, interfaces, aliases and modifiers disappear. Keeping source offsets allows tscc to preserve untouched JavaScript closely while applying explicit replacement ranges for runtime-bearing features.</p>
+<h2>Context is where complexity accumulates</h2>
+<p>Generics versus comparisons, TSX versus angle assertions, live imports versus shadowing, regex versus JSX punctuation and declaration boundaries are not solved by global string replacement. The project has steadily moved those decisions into contextual parser/transform helpers, with independent regressions protecting both sides of each ambiguity.</p>
+<h2>Performance as a regression property</h2>
+<p>Benchmarks run alongside feature work because compiler architecture can become slow gradually. A feature that is correct but doubles many-file latency is treated as an architectural signal, not an unavoidable tax.</p>
+<h2>Future semantic architecture</h2>
+<p>A genuine checker will require symbols, scopes, declarations, type objects, inference, assignability and control-flow facts. That should be a new semantic layer over the syntax/project foundation rather than hidden inside emitter heuristics. Keeping that boundary clean is one of the most important design constraints for future checkpoints.</p>
+</article></div>

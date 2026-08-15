@@ -1,0 +1,26 @@
+<div class="doc"><aside class="side"><b>Start</b><a href="@pathto('docs')">Overview</a><a href="@pathto('getting-started')">Getting started</a><a href="@pathto('cli')">CLI &amp; tsconfig</a><b>Compiler</b><a href="@pathto('language-support')">Language support</a><a href="@pathto('modules-tsx')">Modules &amp; TSX</a><a href="@pathto('architecture')">Architecture</a><b>Evaluation</b><a href="@pathto('benchmarks')">Benchmarks</a><a href="@pathto('battle-tested')">Battle tested</a><a href="@pathto('ai-opinion')">AI opinion</a></aside><article><div class="ey">Evaluation</div><h1>Battle tested: an independent compiler contract, not a self-authored happy path.</h1>
+<p class="lead">tscc is tested in layers because no single oracle is enough. Parser/unit tests isolate compiler internals; runtime differentials compare emitted behavior; project/module tests exercise graphs; and an independent compiler-agnostic regression suite arbitrates syntax against TypeScript itself.</p>
+<div class="cards"><div class="card"><strong>511</strong><p>independent TS→JS regression cases in the current checkpoint.</p></div><div class="card"><strong>483 / 0 / 28</strong><p>pass / current-scope fail / semantic-only skip.</p></div><div class="card"><strong>6 gates</strong><p>parser, runtime, project, TSX, CommonJS and independent regression layers.</p></div></div>
+<h2>The independent regression suite</h2>
+<p>The suite is intentionally kept compiler-agnostic. Cases describe source, expected category, emitted constraints and/or runtime output. <code>tsc --noCheck</code> establishes syntax validity; full <code>tsc</code> distinguishes semantic-checker-only failures; Node validates executable output where appropriate.</p>
+<h3>Why the semantic-only skips matter</h3>
+<p>Those 27 cases are not swept under the rug. They explicitly mark programs whose syntax can be transpiled but whose type correctness requires a semantic checker tscc does not yet have. Keeping them visible prevents the parser from being blamed for missing type-system behavior and creates a ready-made future checker corpus.</p>
+<h2>Parser / AST smoke</h2>
+<p>Focused C++ tests exercise tokenization, program structure, erasure ranges and runtime transforms. These are fast and diagnostic: if a generic list or annotation boundary regresses, the failure is closer to the responsible parser code than an end-to-end CLI test would be.</p>
+<h2>Runtime differential</h2>
+<p>Representative TypeScript is compiled with tscc and tsc, then both JavaScript outputs run under Node. This layer has caught emitter bugs that a textual “contains no colon” assertion would miss—especially enums, parameter properties, generic calls and declaration transforms.</p>
+<h2>Project/module graph</h2>
+<p>Multi-file tests cover relative imports, <code>.js → .ts</code> resolution, cycles, unresolved-module diagnostics, <code>--noResolve</code>, output layout, tsconfig project mode and TSX <code>.jsx → .tsx</code> resolution.</p>
+<h2>CommonJS differential</h2>
+<p>The CommonJS gate compares observable Node behavior with <code>tsc --module commonjs</code>. It covers side-effect/default/named/namespace imports, aliases, re-exports, <code>export *</code>, default declarations, <code>export =</code>, cycles, mutation after import, live values through barrel re-exports and local shadowing.</p>
+<h3>Bugs it found</h3>
+<p>Live-import rewriting initially rewrote local loop bindings, confused argument lists with object shorthand, overlapped later import clauses that reused a name, and produced overlapping template-literal replacements when several imports appeared in one template. Each case now has a permanent reproducer.</p>
+<h2>TSX preserve gate</h2>
+<p>TSX tests cover fragments, typed arrow components, nested ternaries, generic components, spread attributes, regexes with angle brackets and malformed nesting. The parser must distinguish TSX-safe generic arrows such as <code>&lt;T,&gt;</code> from JSX elements.</p>
+<h2>Ruthless negative testing</h2>
+<p>The suite has repeatedly found malformed constructs that tscc accepted: empty import-equals references, missing generic constraints, empty type-operator operands, malformed module aliases, unterminated ambient blocks and broken TSX structures. A negative case is retained only after TypeScript itself confirms it is invalid syntax.</p>
+<h2>No fake tsc bugs</h2>
+<p>Several “obviously wrong” constructs turned out to be accepted TypeScript. They are reclassified. A real tsc correctness bug would be a useful finding, but manufacturing one by confusing semantic checking, <code>--noCheck</code> behavior or surprising grammar would weaken the suite.</p>
+<h2>Performance is also gated</h2>
+<p>Correctness gates are paired with growing benchmark fixtures. The project has already reversed architectural choices that were correct but measurably hurt many-file latency. That keeps “fast” a continuously tested property rather than a launch-day anecdote.</p>
+</article></div>

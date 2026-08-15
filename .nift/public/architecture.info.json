@@ -1,0 +1,28 @@
+{
+  "name": "architecture",
+  "title": "Architecture",
+  "template": "templates/template.html",
+  "content": "content/architecture.html",
+  "output": "public/architecture.html",
+  "minify": false,
+  "minify-version": 0,
+  "dependencies": [
+    "content/architecture.html",
+    "templates/head.html",
+    "templates/template.html"
+  ],
+  "reqs": [
+    "public/ai-opinion.html",
+    "public/architecture.html",
+    "public/assets/css/style.css",
+    "public/assets/js/script.js",
+    "public/battle-tested.html",
+    "public/benchmarks.html",
+    "public/cli.html",
+    "public/docs.html",
+    "public/getting-started.html",
+    "public/index.html",
+    "public/language-support.html",
+    "public/modules-tsx.html"
+  ]
+}

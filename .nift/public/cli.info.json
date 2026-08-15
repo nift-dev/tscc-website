@@ -1,0 +1,28 @@
+{
+  "name": "cli",
+  "title": "CLI and tsconfig",
+  "template": "templates/template.html",
+  "content": "content/cli.html",
+  "output": "public/cli.html",
+  "minify": false,
+  "minify-version": 0,
+  "dependencies": [
+    "content/cli.html",
+    "templates/head.html",
+    "templates/template.html"
+  ],
+  "reqs": [
+    "public/ai-opinion.html",
+    "public/architecture.html",
+    "public/assets/css/style.css",
+    "public/assets/js/script.js",
+    "public/battle-tested.html",
+    "public/benchmarks.html",
+    "public/cli.html",
+    "public/docs.html",
+    "public/getting-started.html",
+    "public/index.html",
+    "public/language-support.html",
+    "public/modules-tsx.html"
+  ]
+}
