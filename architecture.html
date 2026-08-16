@@ -1,11 +1,4 @@
-<!doctype html>
-<html lang="en" data-theme="system">
-<head><title>tscc — Architecture</title>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      <meta name="description" content="tscc is a fast native TypeScript-to-JavaScript compiler evolving carefully toward production-grade type checking.">
-      <meta name="color-scheme" content="light dark">
-      <style>:root{--bg:#f3f1eb;--panel:#fffdf7;--panel2:#e9e6dc;--ink:#181915;--mut:#62645b;--line:#c9c8bd;--accent:#ff4f1f;--accent2:#176bff;--code:#151814;--codeink:#d9ff82;font-family:Inter,ui-sans-serif,system-ui,sans-serif;color-scheme:light}
+<!doctype html> <html lang="en" data-theme="system"> <head><title>tscc — Architecture</title> <meta charset="utf-8"> <meta name="viewport" content="width=device-width,initial-scale=1"> <meta name="description" content="tscc is a fast native TypeScript-to-JavaScript compiler evolving carefully toward production-grade type checking."> <meta name="color-scheme" content="light dark"> <style>:root{--bg:#f3f1eb;--panel:#fffdf7;--panel2:#e9e6dc;--ink:#181915;--mut:#62645b;--line:#c9c8bd;--accent:#ff4f1f;--accent2:#176bff;--code:#151814;--codeink:#d9ff82;font-family:Inter,ui-sans-serif,system-ui,sans-serif;color-scheme:light}
              html[data-theme=dark]{--bg:#10120f;--panel:#171a16;--panel2:#20241e;--ink:#f2f0e7;--mut:#a7aa9d;--line:#343a31;--accent:#ff6840;--accent2:#67a0ff;--code:#090b09;--codeink:#cfff70;color-scheme:dark}
              @media(prefers-color-scheme:dark){html[data-theme=system]{--bg:#10120f;--panel:#171a16;--panel2:#20241e;--ink:#f2f0e7;--mut:#a7aa9d;--line:#343a31;--accent:#ff6840;--accent2:#67a0ff;--code:#090b09;--codeink:#cfff70;color-scheme:dark}
              }
@@ -111,52 +104,7 @@
              .themes{margin-left:auto}
              .codecard{box-shadow:8px 8px 0 var(--accent)}
              }
-      </style></head>
-<body>
-<header>
-<a class="logo" href="./">
-<span>ts</span>
-<b>cc</b>
-<small>native compiler</small>
-</a>
-<nav>
-<a href="./docs.html">Docs</a>
-<a href="./language-support.html">Support</a>
-<a href="./production-readiness.html">Readiness</a>
-<a href="./roadmap.html">Roadmap</a>
-<a href="https://github.com/nifty-site-manager/tscc-website">GitHub ↗</a>
-</nav>
-<div class="themes" aria-label="Colour theme">
-<button data-theme-choice="system" title="System theme">A</button>
-<button data-theme-choice="light" title="Light theme">☀</button>
-<button data-theme-choice="dark" title="Dark theme">◐</button>
-</div>
-</header>
-<main><div class="doc">
-        <aside class="side">
-        <b>Start</b>
-        <a href="./docs.html">Overview</a>
-        <a href="./getting-started.html">Getting started</a>
-        <a href="./cli.html">CLI &amp; tsconfig</a>
-        <b>Compiler</b>
-        <a href="./language-support.html">Language support</a>
-        <a href="./modules-tsx.html">Modules &amp; TSX</a>
-        <a href="./architecture.html">Architecture</a>
-        <b>Direction</b>
-        <a href="./production-readiness.html">Production readiness</a>
-        <a href="./roadmap.html">Roadmap</a>
-        <b>Evidence</b>
-        <a href="./benchmarks.html">Benchmarks</a>
-        <a href="./battle-tested.html">Battle tested</a>
-        <a href="./ai-opinion.html">AI opinion</a>
-        <a class="external" href="https://github.com/nifty-site-manager/tscc-website">Website source ↗</a>
-        </aside>
-        <article>
-      <div class="ey">Design</div>
-      <h1>Architecture: optimize the hot path without losing compiler boundaries</h1>
-      <p class="lead">tscc's performance comes from doing less work and moving it through a small native pipeline—not from one isolated micro-optimization. The first checker slice proves semantic work can be added as a distinct pass without discarding the source-preserving emitter.</p>
-      <h2>Major components</h2>
-      <pre>
+      </style></head> <body> <header> <a class="logo" href="./"> <span>ts</span> <b>cc</b> <small>native compiler</small> </a> <nav> <a href="./docs.html">Docs</a> <a href="./language-support.html">Support</a> <a href="./production-readiness.html">Readiness</a> <a href="./roadmap.html">Roadmap</a> <a href="./ai-development.html">AI development</a> <a href="https://github.com/nifty-site-manager/tscc-website">GitHub ↗</a> </nav> <div class="themes" aria-label="Colour theme"> <button data-theme-choice="system" title="System theme">A</button> <button data-theme-choice="light" title="Light theme">☀</button> <button data-theme-choice="dark" title="Dark theme">◐</button> </div> </header> <main><div class="doc"> <aside class="side"> <b>Start</b> <a href="./docs.html">Overview</a> <a href="./getting-started.html">Getting started</a> <a href="./cli.html">CLI &amp; tsconfig</a> <b>Compiler</b> <a href="./language-support.html">Language support</a> <a href="./modules-tsx.html">Modules &amp; TSX</a> <a href="./architecture.html">Architecture</a> <b>Direction</b> <a href="./production-readiness.html">Production readiness</a> <a href="./roadmap.html">Roadmap</a> <b>Evidence</b> <a href="./benchmarks.html">Benchmarks</a> <a href="./battle-tested.html">Battle tested</a> <a href="./ai-opinion.html">AI opinion</a> <a href="./ai-development.html">AI development</a> <a class="external" href="https://github.com/nifty-site-manager/tscc-website">Website source ↗</a> </aside> <article> <div class="ey">Design</div> <h1>Architecture: optimize the hot path without losing compiler boundaries</h1> <p class="lead">tscc's performance comes from doing less work and moving it through a small native pipeline—not from one isolated micro-optimization. The first checker slice proves semantic work can be added as a distinct pass without discarding the source-preserving emitter.</p> <h2>Major components</h2> <pre>
 <code class="language-plaintext">SourceFile      source bytes + line mapping
 Lexer           lexical tokens
 Parser          syntax recognition + erasure/replacements
@@ -166,30 +114,5 @@ Module graph    relative project discovery
 Config          tsconfig subset
 Diagnostics     attributed errors
 CLI             tsc-like user boundary</code>
-</pre>
-      <h2>Lex once where possible</h2>
-      <p>An earlier project implementation lexed while building the graph and then lexed again while transpiling. Benchmarks caught the many-file regression. The current streaming queue loads and lexes a source once, discovers dependencies from that token stream, transpiles it and queues unseen modules.</p>
-      <h2>Replacement-based emission</h2>
-      <p>Much of TypeScript transpilation is deletion: type annotations, interfaces, aliases and modifiers disappear. Keeping source offsets allows tscc to preserve untouched JavaScript closely while applying explicit replacement ranges for runtime-bearing features.</p>
-      <h2>Context is where complexity accumulates</h2>
-      <p>Generics versus comparisons, TSX versus angle assertions, live imports versus shadowing, regex versus JSX punctuation and declaration boundaries are not solved by global string replacement. The project has steadily moved those decisions into contextual parser/transform helpers, with independent regressions protecting both sides of each ambiguity.</p>
-      <h2>Performance as a regression property</h2>
-      <p>Benchmarks run alongside feature work because compiler architecture can become slow gradually. A feature that is correct but doubles many-file latency is treated as an architectural signal, not an unavoidable tax.</p>
-      <h2>The first semantic seam</h2>
-      <p>The parser retains simple variable declaration token ranges before erasure. A separate <code>Checker</code> compares direct primitive literal initializers with explicit primitive annotations. This is small by design: it establishes pass ownership and diagnostics without pretending that token ranges are already a general typed AST.</p>
-      <h2>Future semantic architecture</h2>
-      <p>A genuine checker will require durable syntax identity, symbols, scopes, declarations, type objects, inference, assignability and control-flow facts. Those should grow as semantic layers over the syntax/project foundation rather than hide inside emitter heuristics. The likely architecture is hybrid: semantic structure owns meaning while validated source edits keep preserving unchanged JavaScript bytes.</p>
-      <h2>Known architectural pressure</h2>
-      <p>The shipped compiler driver and the tested <code>ModuleGraph</code> currently represent parallel traversal paths. Edit producers do not yet have a universal conflict/provenance validator. Multi-file output is written file by file rather than committed transactionally. These are explicit engineering pressures, not invisible guarantees.</p>
-      </article>
-      </div></main>
-<footer>
-<span>
-<b>tscc</b> · an experimental C++ TypeScript compiler</span>
-<span>Fast transpilation today. Type-checking compiler tomorrow.</span>
-<a href="https://github.com/nifty-site-manager/tscc-website">Website source ↗</a>
-</footer>
-<script src="assets/js/script.js">
-</script>
-</body>
-</html>
+</pre> <h2>Lex once where possible</h2> <p>An earlier project implementation lexed while building the graph and then lexed again while transpiling. Benchmarks caught the many-file regression. The current streaming queue loads and lexes a source once, discovers dependencies from that token stream, transpiles it and queues unseen modules.</p> <h2>Replacement-based emission</h2> <p>Much of TypeScript transpilation is deletion: type annotations, interfaces, aliases and modifiers disappear. Keeping source offsets allows tscc to preserve untouched JavaScript closely while applying explicit replacement ranges for runtime-bearing features.</p> <h2>Context is where complexity accumulates</h2> <p>Generics versus comparisons, TSX versus angle assertions, live imports versus shadowing, regex versus JSX punctuation and declaration boundaries are not solved by global string replacement. The project has steadily moved those decisions into contextual parser/transform helpers, with independent regressions protecting both sides of each ambiguity.</p> <h2>Performance as a regression property</h2> <p>Benchmarks run alongside feature work because compiler architecture can become slow gradually. A feature that is correct but doubles many-file latency is treated as an architectural signal, not an unavoidable tax.</p> <h2>The first semantic seam</h2> <p>The parser retains simple variable declaration token ranges before erasure. A separate <code>Checker</code> compares direct primitive literal initializers with explicit primitive annotations. This is small by design: it establishes pass ownership and diagnostics without pretending that token ranges are already a general typed AST.</p> <h2>Future semantic architecture</h2> <p>A genuine checker will require durable syntax identity, symbols, scopes, declarations, type objects, inference, assignability and control-flow facts. Those should grow as semantic layers over the syntax/project foundation rather than hide inside emitter heuristics. The likely architecture is hybrid: semantic structure owns meaning while validated source edits keep preserving unchanged JavaScript bytes.</p> <h2>Known architectural pressure</h2> <p>The shipped compiler driver and the tested <code>ModuleGraph</code> currently represent parallel traversal paths. Edit producers do not yet have a universal conflict/provenance validator. Multi-file output is written file by file rather than committed transactionally. These are explicit engineering pressures, not invisible guarantees.</p> </article> </div></main> <footer> <span> <b>tscc</b> · an experimental C++ TypeScript compiler</span> <span>Fast transpilation today. Type-checking compiler tomorrow.</span> <a href="https://github.com/nifty-site-manager/tscc-website">Website source ↗</a> </footer> <script src="assets/js/script.js">
+</script> </body> </html>
