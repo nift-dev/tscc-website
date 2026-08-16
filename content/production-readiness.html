@@ -17,12 +17,12 @@
       <li>Relative multi-file discovery, project output layout and cycle de-duplication.</li>
       <li>CommonJS lowering tested against observable <code>tsc</code> runtime behavior.</li>
       <li>TSX preserve mode with dedicated ambiguity and malformed-input coverage.</li>
-      <li>A 511-case independent contract currently at 484 pass, zero fail and 27 explicit semantic skips.</li>
-      <li>A separate checker pass with the first bounded primitive annotation/literal contract.</li>
+      <li>A 514-case independent contract currently at 487 pass, zero fail and 27 explicit semantic skips.</li>
+      <li>A lightweight semantic overlay, bounded binder and checker that carry annotated primitive facts through identifier initializers and direct assignments.</li>
     </ul>
 
     <h2>Why the answer is still “not yet”</h2>
-    <p>A production TypeScript compiler needs much more than valid JavaScript output. tscc still lacks a general binder, symbol model, type representation, inference, assignability, control-flow narrowing, overload resolution, declaration merging, library processing and broad semantic diagnostics.</p>
+    <p>A production TypeScript compiler needs much more than valid JavaScript output. tscc now has a bounded binder and primitive assignability slice, but still lacks comprehensive binding forms, durable general type representation, inference, control-flow narrowing, overload resolution, declaration merging, library processing and broad semantic diagnostics.</p>
     <p>Its project layer also has intentionally narrow relative resolution: package and <code>node_modules</code> resolution, path aliases, declaration files and the wider TypeScript configuration surface remain outside the current implementation.</p>
 
     <h2>Operational gaps under active scrutiny</h2>

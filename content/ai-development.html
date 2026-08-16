@@ -31,8 +31,8 @@ run the full regression wall
 reconcile performance, docs, handovers and roadmap</code></pre>
 
     <h2>The independent suite is an arbiter, not a marketing counter</h2>
-    <p>The 511-case compiler-agnostic corpus asks <code>tsc --noCheck</code> whether syntax is accepted, uses full <code>tsc</code> to distinguish semantic-only failures, and runs emitted JavaScript when observable behavior is the contract. Its current 484 pass, zero fail and 27 semantic skips are categories of evidence—not a percentage-complete TypeScript implementation.</p>
-    <p>The first checker checkpoint illustrates the desired migration: one previously skipped semantic case became a genuine pass after tscc acquired a separate checker contract. The other 27 remained honest skips. AI development should keep turning precisely defined gaps into owned behavior one slice at a time.</p>
+    <p>The 514-case compiler-agnostic corpus asks <code>tsc --noCheck</code> whether syntax is accepted, uses full <code>tsc</code> to distinguish semantic-only failures, and runs emitted JavaScript when observable behavior is the contract. Its current 487 pass, zero fail and 27 semantic skips are categories of evidence—not a percentage-complete TypeScript implementation.</p>
+    <p>The first semantic campaign illustrates the desired migration: three previously skipped contracts are genuine passes, a binder-backed CommonJS regression protects production behavior, and 27 unsupported semantic cases remain honest skips. AI development should keep turning precisely defined gaps into owned behavior one slice at a time.</p>
 
     <h2>Contract-based testing: define what tscc owns</h2>
     <p>A compiler test becomes a contract test when it describes observable language or tool behavior without encoding the current parser helper, token-range layout or emitter strategy. The same case should remain meaningful if tscc later replaces a heuristic with binder identity or evolves from source edits toward richer semantic structure.</p>

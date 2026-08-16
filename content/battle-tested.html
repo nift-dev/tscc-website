@@ -6,11 +6,11 @@
 <p class="lead">tscc is tested in layers because no single oracle is enough. Parser/unit tests isolate compiler internals; runtime differentials compare emitted behavior; project/module tests exercise graphs; and an independent compiler-agnostic regression suite arbitrates syntax against TypeScript itself.</p>
 <div class="cards">
 <div class="card">
-<strong>511</strong>
+<strong>514</strong>
 <p>independent TS→JS regression cases in the current checkpoint.</p>
 </div>
 <div class="card">
-<strong>484 / 0 / 27</strong>
+<strong>487 / 0 / 27</strong>
 <p>pass / current-scope fail / semantic-only skip.</p>
 </div>
 <div class="card">
@@ -21,9 +21,9 @@
 <h2>The independent regression suite</h2>
 <p>The suite is intentionally kept compiler-agnostic. Cases describe source, expected category, emitted constraints and/or runtime output. <code>tsc --noCheck</code> establishes syntax validity; full <code>tsc</code> distinguishes semantic-checker-only failures; Node validates executable output where appropriate.</p>
 <h3>Why the semantic-only skips matter</h3>
-<p>Those 27 cases are not swept under the rug. They explicitly mark programs whose syntax can be transpiled but whose type correctness lies beyond tscc's current checker slice. One former skip is now a real pass: the first implemented primitive annotation/literal contract. That gradual promotion is the model for semantic development.</p>
+<p>Those 27 cases are not swept under the rug. They explicitly mark programs whose syntax can be transpiled but whose type correctness lies beyond tscc's current checker slice. Three semantic contracts now pass: direct literal mismatch, bound identifier initializer mismatch and direct assignment mismatch. That gradual promotion is the model for semantic development.</p>
 <h2>The checker gate</h2>
-<p>Focused C++ checker tests and the independent corpus now protect both accepted and rejected primitive declarations. Diagnostics must point to the relevant annotation, signed numeric literals must retain their meaning, and unsupported semantic families must remain outside the claimed contract rather than being rejected by parser guesses.</p>
+<p>Focused checker and binder tests plus the independent corpus protect accepted and rejected primitive declarations, lexical shadowing, bound identifier flow and direct assignments. Unsupported semantic families remain outside the claimed contract rather than being rejected by parser guesses.</p>
 <h2>Parser / AST smoke</h2>
 <p>Focused C++ tests exercise tokenization, program structure, erasure ranges and runtime transforms. These are fast and diagnostic: if a generic list or annotation boundary regresses, the failure is closer to the responsible parser code than an end-to-end CLI test would be.</p>
 <h2>Runtime differential</h2>
