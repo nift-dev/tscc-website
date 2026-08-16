@@ -2,15 +2,36 @@
 
 ## Repository and source authority
 
-This repository is a Nift project on `main`. Canonical source is `content/`,
-`templates/`, and `.nift/`; generated output is `public/` in the same repository.
-This handover remains at the root and must not be placed under `public/`.
+This repository uses the same deliberate two-branch Nift publishing model as the
+Nift website. The `stage` branch owns canonical source: `content/`, `templates/`,
+`.nift/`, documentation, and this handover. The `main` branch owns only the built
+website at repository root. On `stage`, `public/` is an embedded checkout of this
+repository's `main` branch and is recorded as a Git link. It is intentionally not
+a conventional submodule and there is no `.gitmodules` file.
 
-Edit source and rebuild with Nift. Do not hand-edit generated HTML as canonical
-content. Local builds/inspection are normal; commits, pushes, public deployment,
-release/version claims, and publication require explicit approval. Exact hosting
-and deployment procedure is not established by the one-commit history and must be
-confirmed rather than invented.
+This handover belongs at the root of `stage`. Do not add it to the generated
+`main` branch unless publication policy explicitly changes.
+
+Edit source on `stage` and rebuild with Nift. Do not hand-edit generated HTML as
+canonical content, and never run the source build from the outer repository while
+it is on `main`. Local builds/inspection are normal; commits, pushes, public
+deployment, release/version claims, and publication require explicit approval.
+
+For a normal publication checkpoint:
+
+1. Check out `stage` in the outer repository and `main` in `public/`.
+2. Edit only canonical source and documentation outside `public/`.
+3. Run the intended Nift binary from the outer `stage` checkout.
+4. Inspect and test the generated changes under `public/`.
+5. Commit canonical source changes on `stage`.
+6. Commit generated website changes inside `public/` on `main`.
+7. Stage and commit the updated `public` Git-link pointer on `stage`.
+8. Push both branches only when publication is authorized.
+
+The source commit may precede the generated commit during local work, but a
+published `stage` checkpoint must ultimately point at the matching published
+`main` commit. Keep the two histories intelligible and do not mix source files
+back into the deployment branch.
 
 ## Truthfulness burden
 
