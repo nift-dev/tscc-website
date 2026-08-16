@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en" data-theme="system">
-<head><title>tscc — Very fast TypeScript compilation</title>
+<head><title>tscc — Roadmap</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       <meta name="description" content="tscc is a fast native TypeScript-to-JavaScript compiler evolving carefully toward production-grade type checking.">
@@ -132,38 +132,50 @@
 <button data-theme-choice="dark" title="Dark theme">◐</button>
 </div>
 </header>
-<main><section class="hero">
-        <div class="hero-in">
-          <div>
-            <div class="ey">C++17 · checkpoint 0.15 + first checker slice</div>
-            <h1>Compile now.<br><em>Understand</em><br><span>next.</span></h1>
-            <p class="lead">tscc is a tiny native TypeScript-to-JavaScript compiler with serious transpilation, project, CommonJS and TSX machinery—and the first deliberately narrow step toward a real semantic type checker.</p>
-            <div class="actions">
-              <a class="btn hot" href="./getting-started.html">Try the compiler</a>
-              <a class="btn" href="./production-readiness.html">Read the candid status</a>
-              <a class="btn" href="https://github.com/nifty-site-manager/tscc-website">Website on GitHub ↗</a>
-            </div>
-          </div>
-          <div class="codecard">
-            <div class="codehead">checker/primitive-literal.ts</div>
-            <div class="codebody"><span class="com">// accepted and emitted</span><br>const answer: number = 42;<br><br><span class="com">// rejected at the annotation</span><br>const answer: number = <span class="str">"forty-two"</span>;<br><br><span class="kw">error TSCC2001</span><br>Type 'string' is not assignable<br>to type 'number'.</div>
-          </div>
-        </div>
-      </section>
+<main><div class="doc">
+        <aside class="side">
+        <b>Start</b>
+        <a href="./docs.html">Overview</a>
+        <a href="./getting-started.html">Getting started</a>
+        <a href="./cli.html">CLI &amp; tsconfig</a>
+        <b>Compiler</b>
+        <a href="./language-support.html">Language support</a>
+        <a href="./modules-tsx.html">Modules &amp; TSX</a>
+        <a href="./architecture.html">Architecture</a>
+        <b>Direction</b>
+        <a href="./production-readiness.html">Production readiness</a>
+        <a href="./roadmap.html">Roadmap</a>
+        <b>Evidence</b>
+        <a href="./benchmarks.html">Benchmarks</a>
+        <a href="./battle-tested.html">Battle tested</a>
+        <a href="./ai-opinion.html">AI opinion</a>
+        <a class="external" href="https://github.com/nifty-site-manager/tscc-website">Website source ↗</a>
+        </aside>
+        <article>
+          <div class="ey">Direction · a staged compiler</div>
+          <h1>Roadmap to a production type-checking compiler.</h1>
+          <p class="lead">The destination is ambitious and explicit. The method is deliberately patient: protect the fast working transpiler, then add structural and semantic capability as complete vertical slices.</p>
       
-      <section class="statusbar">
-        <div><strong>484 / 0 / 27</strong><span>pass / fail / semantic skip · 511-case corpus</span></div>
-        <div><strong>1st slice</strong><span>primitive annotated variable checking</span></div>
-        <div><strong>C++17</strong><span>native compiler with no JS runtime dependency</span></div>
-        <div><strong>TS 7.0.2</strong><span>latest recorded regression oracle</span></div>
-      </section>
+          <div class="road"><strong>01</strong><div><h3>Harden the transpiler contract</h3><p>Define supported syntax, modules, projects, diagnostics and output policy. Preserve runtime behavior, performance and controlled failure under every later checkpoint.</p></div></div>
+          <div class="road"><strong>02</strong><div><h3>Build durable syntax structure</h3><p>Add coherent nodes and stable source spans where binding and checking need identity, while retaining the proven source-edit emitter.</p></div></div>
+          <div class="road"><strong>03</strong><div><h3>Introduce names, declarations and scopes</h3><p>Model modules, functions, parameters and blocks correctly—including <code>var</code>, lexical declarations, shadowing, closures and merging rules.</p></div></div>
+          <div class="road"><strong>04</strong><div><h3>Grow the type system vertically</h3><p>Move from the first primitive literal check into literal, union, object, function and generic relationships with positive and negative diagnostics at every slice.</p></div></div>
+          <div class="road"><strong>05</strong><div><h3>Unify program and module semantics</h3><p>Give one program graph ownership of source identity, resolution, symbols, diagnostics and future incremental invalidation.</p></div></div>
+          <div class="road"><strong>06</strong><div><h3>Broaden TypeScript compatibility</h3><p>Add inference, narrowing, classes, overloads, advanced types, JSX typing, libraries, packages and configuration according to measured demand and evidence.</p></div></div>
+          <div class="road"><strong>07</strong><div><h3>Production hardening</h3><p>Validate real projects, memory, fuzzing, sanitizers, platforms, diagnostics, packaging, releases and eventually incremental/watch behavior.</p></div></div>
       
-      <section class="feature-grid">
-        <div class="feature"><b>Works today</b><h2>A capable fast transpiler</h2><p>Broad TypeScript erasure, runtime transforms, relative project discovery, CommonJS lowering with live reads, and TSX preservation.</p></div>
-        <div class="feature"><b>New foundation</b><h2>A separate checker pass</h2><p>The first semantic contract checks direct primitive literals against explicit <code>number</code>, <code>string</code>, and <code>boolean</code> variable annotations.</p></div>
-        <div class="feature"><b>Evidence</b><h2>Compatibility is executable</h2><p>Internal gates and an independent 511-case corpus separate syntax, emission, runtime behavior and future semantic work.</p></div>
-        <div class="feature"><b>Destination</b><h2>Production type checking</h2><p>The roadmap aims beyond syntax stripping, but gets there through bounded vertical slices—not a compatibility claim made years too early.</p></div>
-      </section></main>
+          <h2>The hybrid architecture hypothesis</h2>
+          <pre><code class="language-plaintext">source + durable structural syntax
+        ├── binder → symbols → types → diagnostics
+        └── validated source edits → JavaScript emission</code></pre>
+          <p>tscc does not need to throw away its fast source-preserving emitter to learn program meaning. Semantic nodes can retain original spans, while validated edits continue to own changed bytes. That direction remains a hypothesis to measure rather than dogma.</p>
+      
+          <h2>How checkpoints earn their place</h2>
+          <p>Each slice should begin with the exact contract, ask TypeScript for reference behavior where relevant, add independent and focused tests, implement every required layer, inspect and run emitted JavaScript, stress scope and malformed neighbors, then rerun the full evidence wall. Semantic progress that silently damages transpilation is not progress.</p>
+      
+          <div class="call"><strong>No teleportation:</strong> the roadmap may reorder when evidence demands it, but it will not replace missing compiler foundations with parser special cases or premature marketing language.</div>
+        </article>
+      </div></main>
 <footer>
 <span>
 <b>tscc</b> · an experimental C++ TypeScript compiler</span>
