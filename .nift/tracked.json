@@ -59,6 +59,11 @@
       "name": "ai-opinion",
       "title": "AI opinion",
       "template": "templates/template.html"
+    },
+    {
+      "name": "ai-development",
+      "title": "AI development",
+      "template": "templates/template.html"
     }
   ]
 }

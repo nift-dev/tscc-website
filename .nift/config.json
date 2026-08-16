@@ -8,6 +8,7 @@
 		"default-template": "templates/template.html",
 		"backup-scripts": true,
 		"build-threads": -1,
-		"incremental-mode": "modified"
+		"incremental-mode": "modified",
+		"minify-exts": [".html", ".css", ".js"]
 	}
 }

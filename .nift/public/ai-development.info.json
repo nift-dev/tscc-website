@@ -1,13 +1,13 @@
 {
-  "name": "architecture",
-  "title": "Architecture",
+  "name": "ai-development",
+  "title": "AI development",
   "template": "templates/template.html",
-  "content": "content/architecture.html",
-  "output": "public/architecture.html",
+  "content": "content/ai-development.html",
+  "output": "public/ai-development.html",
   "minify": true,
   "minify-version": 1,
   "dependencies": [
-    "content/architecture.html",
+    "content/ai-development.html",
     "templates/head.html",
     "templates/sidebar.html",
     "templates/style.css",
