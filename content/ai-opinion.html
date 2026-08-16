@@ -1,17 +1,86 @@
-<div class="doc"><aside class="side"><b>Start</b><a href="@pathto('docs')">Overview</a><a href="@pathto('getting-started')">Getting started</a><a href="@pathto('cli')">CLI &amp; tsconfig</a><b>Compiler</b><a href="@pathto('language-support')">Language support</a><a href="@pathto('modules-tsx')">Modules &amp; TSX</a><a href="@pathto('architecture')">Architecture</a><b>Evaluation</b><a href="@pathto('benchmarks')">Benchmarks</a><a href="@pathto('battle-tested')">Battle tested</a><a href="@pathto('ai-opinion')">AI opinion</a></aside><article><div class="ey">Evaluation · candid assessment</div><h1>AI opinion: tscc is a remarkable transpiler experiment, not yet the TypeScript compiler.</h1>
-<p class="lead">What has changed my opinion most is not the headline speedup. It is that tscc has continued adding enums, namespaces, parameter properties, project graphs, CommonJS live bindings and TSX while keeping a small architecture and a zero-current-scope-failure independent regression gate. That makes the experiment credible. The semantic type system remains the enormous caveat.</p>
-<div class="call"><strong>Current verdict:</strong> I would use tscc experimentally for extremely fast TypeScript-to-JavaScript builds in a controlled codebase, especially when a separate type-check step exists. I would not yet substitute it blindly for <code>tsc</code> across arbitrary TypeScript projects.</div>
+<div class="doc">
+  @input("templates/sidebar.html")
+  <article>
+<div class="ey">Evaluation · candid assessment</div>
+<h1>AI opinion: tscc has crossed from transpiler experiment into early compiler architecture.</h1>
+<p class="lead">What has changed my opinion most is not the headline speedup. It is that tscc added difficult runtime/module behavior without losing its regression wall, then introduced a genuinely separate checker pass and promoted exactly one semantic skip into an owned contract. That is the patient architecture a serious compiler needs.</p>
+<div class="call">
+<strong>Current verdict:</strong> I would use tscc experimentally for extremely fast TypeScript-to-JavaScript builds in a controlled codebase, especially when a separate type-check step exists. I would not yet substitute it blindly for <code>tsc</code> across arbitrary TypeScript projects.</div>
 <h2>Current ratings</h2>
-<div class="rating"><span>Compile latency</span><div class="meter"><i style="width:99%"></i></div><strong>9.9</strong></div>
-<div class="rating"><span>Architecture</span><div class="meter"><i style="width:95%"></i></div><strong>9.5</strong></div>
-<div class="rating"><span>Regression discipline</span><div class="meter"><i style="width:97%"></i></div><strong>9.7</strong></div>
-<div class="rating"><span>Transpile breadth</span><div class="meter"><i style="width:86%"></i></div><strong>8.6</strong></div>
-<div class="rating"><span>Modules / projects</span><div class="meter"><i style="width:86%"></i></div><strong>8.6</strong></div>
-<div class="rating"><span>TSX preserve</span><div class="meter"><i style="width:84%"></i></div><strong>8.4</strong></div>
-<div class="rating"><span>Diagnostics / CLI DX</span><div class="meter"><i style="width:80%"></i></div><strong>8.0</strong></div>
-<div class="rating"><span>Semantic type checking</span><div class="meter"><i style="width:8%"></i></div><strong>0.8</strong></div>
-<div class="rating"><span>Drop-in tsc replacement</span><div class="meter"><i style="width:56%"></i></div><strong>5.6</strong></div>
-<h2>The 0.8 is not a minor missing feature</h2>
+<div class="rating">
+<span>Compile latency</span>
+<div class="meter">
+<i style="width:99%">
+</i>
+</div>
+<strong>9.9</strong>
+</div>
+<div class="rating">
+<span>Architecture</span>
+<div class="meter">
+<i style="width:95%">
+</i>
+</div>
+<strong>9.5</strong>
+</div>
+<div class="rating">
+<span>Regression discipline</span>
+<div class="meter">
+<i style="width:97%">
+</i>
+</div>
+<strong>9.7</strong>
+</div>
+<div class="rating">
+<span>Transpile breadth</span>
+<div class="meter">
+<i style="width:86%">
+</i>
+</div>
+<strong>8.6</strong>
+</div>
+<div class="rating">
+<span>Modules / projects</span>
+<div class="meter">
+<i style="width:86%">
+</i>
+</div>
+<strong>8.6</strong>
+</div>
+<div class="rating">
+<span>TSX preserve</span>
+<div class="meter">
+<i style="width:84%">
+</i>
+</div>
+<strong>8.4</strong>
+</div>
+<div class="rating">
+<span>Diagnostics / CLI DX</span>
+<div class="meter">
+<i style="width:80%">
+</i>
+</div>
+<strong>8.0</strong>
+</div>
+<div class="rating">
+<span>Semantic type checking</span>
+<div class="meter">
+<i style="width:14%">
+</i>
+</div>
+<strong>1.4</strong>
+</div>
+<div class="rating">
+<span>Drop-in tsc replacement</span>
+<div class="meter">
+<i style="width:56%">
+</i>
+</div>
+<strong>5.6</strong>
+</div>
+<h2>The 1.4 reflects a real beginning, not broad coverage</h2>
+<p>The primitive annotation/literal slice matters architecturally: it is a distinct checker pass, has focused diagnostics, and moved one independent case from semantic skip to pass. It proves tscc can begin owning semantic truth without teaching the parser to reject programs through ad hoc guesses.</p>
 <p>Type checking is the main reason TypeScript exists. A serious checker needs scopes, symbols, declaration merging, type representations, generic instantiation/inference, overload selection, assignability, control-flow narrowing, accessibility, contextual typing, lib declarations and a huge diagnostic surface. That is not “add another pass after transpilation”. It is arguably a project as large as everything tscc has built so far.</p>
 <p>That is why the 5.6 drop-in score is much lower than the 8+ scores for modules and transpilation. A fast emitter can be excellent at its job and still not be a TypeScript compiler replacement in the sense users normally mean.</p>
 <h2>Where tscc has exceeded my expectations</h2>
@@ -21,7 +90,7 @@
 <p>Erasing <code>: number</code> is one thing. Correctly handling re-exports, cycles, default forms and live imported bindings is compiler work. The live-binding pass has had to understand shadowing in parameters, catches, blocks and loops; object shorthand versus ordinary argument lists; and template interpolations. Runtime differential testing against tsc is exactly the right way to develop that surface.</p>
 <h2>The independent regression suite may be the most important asset</h2>
 <p>The current 511 cases do more than count syntax features. They encode how we decide whether a failure belongs to parsing, runtime emission or a future semantic checker. They also prevent confirmation bias: <code>tsc --noCheck</code> gets to tell us that a supposedly malformed construct is actually legal TypeScript.</p>
-<p>If tscc eventually attempts semantic checking, the 28 semantic-only skips become a useful first migration target. I would want that checker to turn skips into genuine pass/fail results gradually rather than flip a switch and claim “type checking supported”.</p>
+<p>The first checker checkpoint did exactly what I wanted: it turned one semantic-only skip into a genuine pass and left 27 honest skips. That gradual promotion model is much more convincing than flipping a switch and claiming “type checking supported”.</p>
 <h2>What should happen before a 1.0 claim</h2>
 <p>I would want substantially broader tsconfig/module-resolution compatibility, package resolution, more declaration/module corner cases, a clear source-map story, stronger diagnostics, fuzzing, and either a serious semantic checker or an explicit product definition that says tscc is a transpiler and type checking belongs elsewhere.</p>
 <p>The latter is a legitimate choice. A world in which <code>tscc</code> is an exceptionally fast transpiler used alongside a separate checker can still be useful. The mistake would be leaving users unsure which contract they are buying.</p>
@@ -32,5 +101,6 @@
 <p>The danger is equally clear: compiler grammar has enormous long-tail complexity, and AI can generate convincing but incorrect special cases very quickly. The project's discipline of testing every discovered ambiguity against TypeScript is what makes AI acceleration useful rather than reckless.</p>
 <h2>Would I keep pursuing it?</h2>
 <p>Absolutely. The experiment has already answered the original question—yes, a native TypeScript erasure/compiler pipeline can be dramatically faster for this workload. The more interesting question now is how much TypeScript compatibility can be added before complexity or semantic work erodes that advantage.</p>
-<p>I would rather see tscc stay explicit about its missing checker and become excellent layer by layer than rush toward a “tsc replacement” label. The current architecture and test discipline make that patient path unusually promising.</p>
-</article></div>
+<p>I would rather see tscc stay explicit about its narrowly bounded checker and become excellent layer by layer than rush toward a “tsc replacement” label. The current architecture and test discipline make that patient path unusually promising.</p>
+</article>
+</div>

@@ -1,24 +1,41 @@
-<div class="doc"><aside class="side"><b>Start</b><a href="@pathto('docs')">Overview</a><a href="@pathto('getting-started')">Getting started</a><a href="@pathto('cli')">CLI &amp; tsconfig</a><b>Compiler</b><a href="@pathto('language-support')">Language support</a><a href="@pathto('modules-tsx')">Modules &amp; TSX</a><a href="@pathto('architecture')">Architecture</a><b>Evaluation</b><a href="@pathto('benchmarks')">Benchmarks</a><a href="@pathto('battle-tested')">Battle tested</a><a href="@pathto('ai-opinion')">AI opinion</a></aside><article><div class="ey">Documentation</div><h1>A fast C++ TypeScript-to-JavaScript compiler experiment.</h1>
-<p class="lead">tscc is an experimental TypeScript compiler/transpiler written in C++. Its current strength is extremely low compile latency while covering a substantial and growing runtime-erasure/module/TSX surface. Its largest missing subsystem is semantic type checking.</p>
-<div class="call"><strong>Important:</strong> tscc is not yet a drop-in replacement for <code>tsc</code>. The docs distinguish what is implemented, what is tested, and what remains intentionally incomplete.</div>
+<div class="doc">
+  @input("templates/sidebar.html")
+  <article>
+<div class="ey">Documentation</div>
+<h1>A fast compiler growing into its name.</h1>
+<p class="lead">tscc is an experimental TypeScript compiler written in C++17. Today it is strongest as an extremely low-latency transpiler with substantial language, project, CommonJS and TSX support. It now also contains a separate checker pass and its first intentionally narrow semantic contract.</p>
+<div class="call">
+<strong>Important:</strong> tscc is not yet a drop-in replacement for <code>tsc</code>. The docs distinguish what is implemented, what is tested, and what remains intentionally incomplete.</div>
+<div class="cards">
+<div class="card"><strong>Emit</strong><p>Broad TypeScript erasure plus runtime-bearing transforms.</p></div>
+<div class="card"><strong>Check</strong><p>Primitive annotations against direct primitive literal initializers.</p></div>
+<div class="card"><strong>Goal</strong><p>A production-ready type-checking compiler built in measured slices.</p></div>
+</div>
 <h2>Compilation pipeline</h2>
-<pre><code class="language-plaintext">source files
+<pre>
+<code class="language-plaintext">source files
    ↓
 SourceFile + diagnostics
    ↓
 lexer
    ↓
-parser / erasure + runtime transforms
+parser / structural ranges
+   ↓
+bounded semantic checker
    ↓
 project/module graph
    ↓
 module transform / TSX preserve
    ↓
-JavaScript / JSX output</code></pre>
+JavaScript / JSX output</code>
+</pre>
 <h2>What already works well</h2>
 <p>Type annotations, interfaces, aliases, generics, assertions, enums, parameter properties, namespaces, overload declarations, ambient forms, modern type syntax erasure, project graph resolution, CommonJS transforms and TSX-preserve mode all have dedicated regressions. The exact support boundary is documented rather than implied.</p>
 <h2>Why this project exists</h2>
-<p><code>tsc</code> is extraordinarily capable, but startup and project compilation can feel expensive when the desired operation is only “turn this TypeScript syntax into runnable JavaScript”. tscc explores how far a small native compiler can push that latency downward without building on the TypeScript compiler implementation.</p>
+<p>
+<code>tsc</code> is extraordinarily capable, but startup and project compilation can feel expensive when the desired operation is only “turn this TypeScript syntax into runnable JavaScript”. tscc explores how far a small native compiler can push that latency downward without building on the TypeScript compiler implementation.</p>
+<p>The long-term question is larger: can that compact native foundation grow durable syntax, binding, types and diagnostics without sacrificing the latency advantage that made the experiment worth starting? The <a href="@pathto('roadmap')">roadmap</a> makes that destination and the staged route explicit.</p>
 <h2>Read next</h2>
 <p>Start with <a href="@pathto('getting-started')">Getting started</a>, then use <a href="@pathto('language-support')">Language support</a> and <a href="@pathto('modules-tsx')">Modules &amp; TSX</a> as the current feature contract. <a href="@pathto('battle-tested')">Battle tested</a> explains the independent regression and differential layers; <a href="@pathto('ai-opinion')">AI opinion</a> gives a deliberately critical assessment.</p>
-</article></div>
+</article>
+</div>

@@ -8,7 +8,6 @@
 		"default-template": "templates/template.html",
 		"backup-scripts": true,
 		"build-threads": -1,
-		"paginate-threads": -1,
 		"incremental-mode": "modified"
 	}
 }

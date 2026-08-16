@@ -1,13 +1,13 @@
 {
-  "name": "modules-tsx",
-  "title": "Modules and TSX",
+  "name": "production-readiness",
+  "title": "Production readiness",
   "template": "templates/template.html",
-  "content": "content/modules-tsx.html",
-  "output": "public/modules-tsx.html",
+  "content": "content/production-readiness.html",
+  "output": "public/production-readiness.html",
   "minify": false,
   "minify-version": 0,
   "dependencies": [
-    "content/modules-tsx.html",
+    "content/production-readiness.html",
     "templates/head.html",
     "templates/sidebar.html",
     "templates/style.css",

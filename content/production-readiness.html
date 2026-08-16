@@ -1,0 +1,41 @@
+<div class="doc">
+  @input("templates/sidebar.html")
+  <article>
+    <div class="ey">Status · evidence before labels</div>
+    <h1>Is tscc production-ready?</h1>
+    <p class="lead">Not yet as a general TypeScript compiler. It is an unusually capable and well-tested experimental transpiler with an early semantic checker—not a safe drop-in replacement for <code>tsc</code>.</p>
+
+    <div class="call">
+      <strong>Candid verdict:</strong>
+      <p>Use tscc for controlled evaluation, compiler research, and selected fast build paths where its exact syntax/module contract is known and an independent type-check remains in CI. Do not make it the sole correctness gate for an arbitrary production TypeScript application.</p>
+    </div>
+
+    <h2>What is already credible</h2>
+    <ul class="check">
+      <li>A real lexer/parser and range-based native emitter, not a regex-only syntax stripper.</li>
+      <li>Runtime-bearing transforms for enums, namespaces and parameter properties.</li>
+      <li>Relative multi-file discovery, project output layout and cycle de-duplication.</li>
+      <li>CommonJS lowering tested against observable <code>tsc</code> runtime behavior.</li>
+      <li>TSX preserve mode with dedicated ambiguity and malformed-input coverage.</li>
+      <li>A 511-case independent contract currently at 484 pass, zero fail and 27 explicit semantic skips.</li>
+      <li>A separate checker pass with the first bounded primitive annotation/literal contract.</li>
+    </ul>
+
+    <h2>Why the answer is still “not yet”</h2>
+    <p>A production TypeScript compiler needs much more than valid JavaScript output. tscc still lacks a general binder, symbol model, type representation, inference, assignability, control-flow narrowing, overload resolution, declaration merging, library processing and broad semantic diagnostics.</p>
+    <p>Its project layer also has intentionally narrow relative resolution: package and <code>node_modules</code> resolution, path aliases, declaration files and the wider TypeScript configuration surface remain outside the current implementation.</p>
+
+    <h2>Operational gaps under active scrutiny</h2>
+    <p>Multi-file emission is currently per-file and non-transactional, so a later failure can leave earlier output behind. The supported TypeScript oracle range needs durable pinning. Native safety, fuzzing, larger real-world projects, memory measurements, cross-platform validation and reproducible release packaging all need deeper evidence before a broad production claim.</p>
+
+    <h2>Two different milestones</h2>
+    <div class="cards">
+      <div class="card"><strong>Transpiler</strong><p>A bounded syntax/module subset with correct runtime output, controlled rejection, reliable projects and production-grade operational behavior.</p></div>
+      <div class="card"><strong>Checker</strong><p>Durable syntax, scopes, symbols, types, inference and cross-module semantic diagnostics for a versioned compatibility contract.</p></div>
+      <div class="card"><strong>Final goal</strong><p>A production-ready type-checking compiler. The first milestone is useful, but it does not replace the second.</p></div>
+    </div>
+
+    <h2>What would change this assessment?</h2>
+    <p>A release-like candidate would need an explicit support matrix, stable failure/output policy, clean sanitizer and adversarial runs, representative real projects, reproducible benchmarks, platform/package evidence and a clearly bounded semantic contract. Read the <a href="@pathto('roadmap')">living roadmap</a> for the staged route there.</p>
+  </article>
+</div>

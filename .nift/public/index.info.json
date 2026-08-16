@@ -9,16 +9,16 @@
   "dependencies": [
     "content/index.html",
     "templates/head.html",
+    "templates/style.css",
     "templates/template.html"
   ],
   "reqs": [
-    "public/ai-opinion.html",
-    "public/assets/css/style.css",
     "public/assets/js/script.js",
-    "public/battle-tested.html",
-    "public/benchmarks.html",
     "public/docs.html",
     "public/getting-started.html",
-    "public/index.html"
+    "public/index.html",
+    "public/language-support.html",
+    "public/production-readiness.html",
+    "public/roadmap.html"
   ]
 }

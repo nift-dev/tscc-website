@@ -9,12 +9,13 @@
   "dependencies": [
     "content/cli.html",
     "templates/head.html",
+    "templates/sidebar.html",
+    "templates/style.css",
     "templates/template.html"
   ],
   "reqs": [
     "public/ai-opinion.html",
     "public/architecture.html",
-    "public/assets/css/style.css",
     "public/assets/js/script.js",
     "public/battle-tested.html",
     "public/benchmarks.html",
@@ -23,6 +24,8 @@
     "public/getting-started.html",
     "public/index.html",
     "public/language-support.html",
-    "public/modules-tsx.html"
+    "public/modules-tsx.html",
+    "public/production-readiness.html",
+    "public/roadmap.html"
   ]
 }

@@ -36,6 +36,16 @@
       "template": "templates/template.html"
     },
     {
+      "name": "production-readiness",
+      "title": "Production readiness",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "roadmap",
+      "title": "Roadmap",
+      "template": "templates/template.html"
+    },
+    {
       "name": "benchmarks",
       "title": "Benchmarks",
       "template": "templates/template.html"

@@ -1,11 +1,27 @@
-<div class="doc"><aside class="side"><b>Start</b><a href="@pathto('docs')">Overview</a><a href="@pathto('getting-started')">Getting started</a><a href="@pathto('cli')">CLI &amp; tsconfig</a><b>Compiler</b><a href="@pathto('language-support')">Language support</a><a href="@pathto('modules-tsx')">Modules &amp; TSX</a><a href="@pathto('architecture')">Architecture</a><b>Evaluation</b><a href="@pathto('benchmarks')">Benchmarks</a><a href="@pathto('battle-tested')">Battle tested</a><a href="@pathto('ai-opinion')">AI opinion</a></aside><article><div class="ey">Start</div><h1>Getting started</h1>
+<div class="doc">
+  @input("templates/sidebar.html")
+  <article>
+<div class="ey">Start</div>
+<h1>Getting started</h1>
 <p class="lead">Build tscc, compile one file, then graduate to a project only after understanding the current semantic-checker boundary.</p>
-<h2>Build</h2><pre><code class="language-bash">make
-./tscc --version</code></pre>
-<h2>Compile one file</h2><pre><code class="language-bash">tscc src/main.ts --outDir dist</code></pre>
+<h2>Build</h2>
+<pre>
+<code class="language-bash">git clone https://github.com/nifty-site-manager/tscc.git
+cd tscc
+make
+./tscc --version</code>
+</pre>
+<h2>Compile one file</h2>
+<pre>
+<code class="language-bash">tscc src/main.ts --outDir dist</code>
+</pre>
 <p>By default tscc follows relative static imports and emits the discovered project graph. Use <code>--noResolve</code> when you intentionally want only explicitly supplied inputs.</p>
-<h2>Project mode</h2><pre><code class="language-bash">tscc -p tsconfig.json</code></pre>
-<pre><code class="language-json">{
+<h2>Project mode</h2>
+<pre>
+<code class="language-bash">tscc -p tsconfig.json</code>
+</pre>
+<pre>
+<code class="language-json">{
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "dist",
@@ -14,17 +30,30 @@
   },
   "include": ["src/**/*.ts"],
   "exclude": ["src/generated/**"]
-}</code></pre>
-<h2>CommonJS</h2><pre><code class="language-bash">tscc --module commonjs src/main.ts --outDir dist</code></pre>
+}</code>
+</pre>
+<h2>CommonJS</h2>
+<pre>
+<code class="language-bash">tscc --module commonjs src/main.ts --outDir dist</code>
+</pre>
 <p>The CommonJS path is executable and differential-tested against <code>tsc --module commonjs</code>, including live imported reads, re-exports and cycles. It is still treated as a growing compatibility surface, not a declaration that every TypeScript module edge case is finished.</p>
-<h2>TSX preserve</h2><pre><code class="language-bash">tscc --jsx preserve src/App.tsx --outDir dist</code></pre>
-<p><code>.tsx</code> becomes <code>.jsx</code>: TypeScript syntax is erased while JSX remains for a later JSX-aware transform or bundler.</p>
+<h2>TSX preserve</h2>
+<pre>
+<code class="language-bash">tscc --jsx preserve src/App.tsx --outDir dist</code>
+</pre>
+<p>
+<code>.tsx</code> becomes <code>.jsx</code>: TypeScript syntax is erased while JSX remains for a later JSX-aware transform or bundler.</p>
 <h2>Where type checking fits</h2>
-<p>tscc currently answers “can I parse/transpile this program?” much more than “is this program type-correct?”. If semantic guarantees matter, run a separate <code>tsc --noEmit</code> check in CI until tscc has a real checker.</p>
-<pre><code class="language-json">{
+<p>tscc now checks its first bounded semantic family: explicit primitive variable annotations against direct primitive literal initializers. It still answers “can I parse/transpile this program?” far more broadly than “is this entire program type-correct?”. Keep a separate <code>tsc --noEmit</code> check in CI for general semantic guarantees.</p>
+<pre>
+<code class="language-json">{
   "scripts": {
     "check": "tsc --noEmit -p tsconfig.json",
     "build": "tscc -p tsconfig.json"
   }
-}</code></pre>
-</article></div>
+}</code>
+</pre>
+<h2>Choose it with clear eyes</h2>
+<p>Before adopting tscc beyond an experiment, read <a href="@pathto('language-support')">the exact support boundary</a> and <a href="@pathto('production-readiness')">the production-readiness assessment</a>. Unsupported TypeScript semantics remain broader than the implemented checker slice and require the independent check above.</p>
+</article>
+</div>
