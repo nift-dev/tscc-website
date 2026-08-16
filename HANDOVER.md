@@ -39,8 +39,8 @@ This site must explain the compiler that actually exists, not the compiler the
 project may eventually become. “TypeScript compiler” can imply drop-in `tsc`
 compatibility. Current product wording is experimental TypeScript-to-JavaScript
 compiler; tscc 0.15.0 has substantial parsing/transforms/project/module support but
-a bounded semantic overlay, binder and primitive checker rather than a general
-TypeScript type system.
+a bounded semantic overlay, binder, durable primitive type store and expression/
+assignment checker rather than a general TypeScript type system.
 
 Every capability claim should map to appropriate evidence—not parser acceptance
 alone. Where useful distinguish supported, partial, experimental, planned, and
@@ -49,10 +49,11 @@ keep it current.
 
 ## Current evidence and claims
 
-The site currently advertises 514 independent cases (487 pass, zero fail, 27
-semantic skips) and local benchmark ratios
-for 100 TS files, 100 TSX files, and a 200-module CommonJS fixture. Those correspond
-to retained 0.13–0.15-era evidence and must be treated as checkpoint measurements.
+The site currently advertises 519 independent cases (492 pass, zero fail, 27
+semantic skips) and dated five-run local medians for startup, 100/500 basic files,
+and 100-file feature-heavy/advanced fixtures. The August 2026 snapshot uses
+TypeScript 7.0.2 and must be treated as checkpoint evidence rather than a stable
+cross-machine speed claim.
 
 Benchmark comparisons must separate `tscc`, `tsc --noCheck`, and full `tsc` and
 state corpus, versions, configuration, machine, runs, cold/warm behavior, and

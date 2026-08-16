@@ -3,7 +3,7 @@
   <article>
 <div class="ey">Evaluation</div>
 <h1>Benchmarks</h1>
-<p class="lead">Speed is the experiment's original motivation, so every major compiler checkpoint carries comparable fixtures rather than relying on impressions from one file.</p>
+<p class="lead">Speed is the experiment's original motivation, so every major compiler checkpoint carries comparable fixtures rather than relying on impressions from one file. These are five-run medians recorded on 17 August 2026 with TypeScript 7.0.2.</p>
 <table class="bench">
 <thead>
 <tr>
@@ -15,39 +15,59 @@
 </thead>
 <tbody>
 <tr>
-<td>100 TS files</td>
+<td>Small startup</td>
 <td>
-<strong>5.043 ms</strong>
+<strong>1.575 ms</strong>
 </td>
-<td>487.216 ms</td>
+<td>122.799 ms</td>
 <td>
-<strong>96.6×</strong>
-</td>
-</tr>
-<tr>
-<td>100 TSX files</td>
-<td>
-<strong>5.183 ms</strong>
-</td>
-<td>466.065 ms</td>
-<td>
-<strong>89.9×</strong>
+<strong>78.0×</strong>
 </td>
 </tr>
 <tr>
-<td>200 CommonJS modules</td>
+<td>100 basic files</td>
 <td>
-<strong>7.885 ms</strong>
+<strong>6.827 ms</strong>
 </td>
-<td>533.033 ms</td>
+<td>127.774 ms</td>
 <td>
-<strong>67.6×</strong>
+<strong>18.7×</strong>
+</td>
+</tr>
+<tr>
+<td>500 basic files</td>
+<td>
+<strong>25.529 ms</strong>
+</td>
+<td>155.670 ms</td>
+<td>
+<strong>6.1×</strong>
+</td>
+</tr>
+<tr>
+<td>100 feature-heavy files</td>
+<td>
+<strong>8.480 ms</strong>
+</td>
+<td>130.592 ms</td>
+<td>
+<strong>15.4×</strong>
+</td>
+</tr>
+<tr>
+<td>100 advanced files</td>
+<td>
+<strong>9.391 ms</strong>
+</td>
+<td>131.424 ms</td>
+<td>
+<strong>14.0×</strong>
 </td>
 </tr>
 </tbody>
 </table>
 <h2>What these numbers mean</h2>
-<p>They demonstrate startup/project-transpilation potential for the current implementation on this machine. They do <em>not</em> mean tscc performs all the work TypeScript performs faster. Full TypeScript semantic checking is absent, lib processing differs, and the supported compiler surface is smaller.</p>
+<p>They demonstrate startup/project-transpilation potential for the current implementation on this machine. They do <em>not</em> mean tscc performs all the work TypeScript performs faster. tscc's semantic work remains deliberately bounded, lib processing differs, and the supported compiler surface is smaller. Older snapshots showed much larger ratios because their installed TypeScript process was slower; dated raw comparisons are more honest than preserving the best historical headline.</p>
 <h2>Why compare with <code>--noCheck</code>?</h2>
 <p>
 <code>tsc --noCheck</code> is the more honest reference for transpilation-oriented work because full tsc includes semantic checking that tscc does not implement. Full tsc is still recorded to show the practical end-to-end TypeScript cost.</p>

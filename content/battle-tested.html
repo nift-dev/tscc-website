@@ -6,11 +6,11 @@
 <p class="lead">tscc is tested in layers because no single oracle is enough. Parser/unit tests isolate compiler internals; runtime differentials compare emitted behavior; project/module tests exercise graphs; and an independent compiler-agnostic regression suite arbitrates syntax against TypeScript itself.</p>
 <div class="cards">
 <div class="card">
-<strong>514</strong>
+<strong>519</strong>
 <p>independent TS→JS regression cases in the current checkpoint.</p>
 </div>
 <div class="card">
-<strong>487 / 0 / 27</strong>
+<strong>492 / 0 / 27</strong>
 <p>pass / current-scope fail / semantic-only skip.</p>
 </div>
 <div class="card">
@@ -21,9 +21,9 @@
 <h2>The independent regression suite</h2>
 <p>The suite is intentionally kept compiler-agnostic. Cases describe source, expected category, emitted constraints and/or runtime output. <code>tsc --noCheck</code> establishes syntax validity; full <code>tsc</code> distinguishes semantic-checker-only failures; Node validates executable output where appropriate.</p>
 <h3>Why the semantic-only skips matter</h3>
-<p>Those 27 cases are not swept under the rug. They explicitly mark programs whose syntax can be transpiled but whose type correctness lies beyond tscc's current checker slice. Three semantic contracts now pass: direct literal mismatch, bound identifier initializer mismatch and direct assignment mismatch. That gradual promotion is the model for semantic development.</p>
+<p>Those 27 cases are not swept under the rug. They explicitly mark programs whose syntax can be transpiled but whose type correctness lies beyond tscc's current checker slice. Seven semantic contracts now pass, covering literal and bound-identifier mismatch, primitive expressions, direct/compound assignment and const mutability. That gradual promotion is the model for semantic development.</p>
 <h2>The checker gate</h2>
-<p>Focused checker and binder tests plus the independent corpus protect accepted and rejected primitive declarations, lexical shadowing, bound identifier flow and direct assignments. Unsupported semantic families remain outside the claimed contract rather than being rejected by parser guesses.</p>
+<p>Focused checker, type-model and binder tests plus the independent corpus protect primitive declarations/expressions, lexical shadowing, assignment/mutability, catch/loop scopes and static import identity. Unsupported semantic families remain outside the claimed contract rather than being rejected by parser guesses.</p>
 <h2>Parser / AST smoke</h2>
 <p>Focused C++ tests exercise tokenization, program structure, erasure ranges and runtime transforms. These are fast and diagnostic: if a generic list or annotation boundary regresses, the failure is closer to the responsible parser code than an end-to-end CLI test would be.</p>
 <h2>Runtime differential</h2>
@@ -33,7 +33,7 @@
 <h2>CommonJS differential</h2>
 <p>The CommonJS gate compares observable Node behavior with <code>tsc --module commonjs</code>. It covers side-effect/default/named/namespace imports, aliases, re-exports, <code>export *</code>, default declarations, <code>export =</code>, cycles, mutation after import, live values through barrel re-exports and local shadowing.</p>
 <h3>Bugs it found</h3>
-<p>Live-import rewriting initially rewrote local loop bindings, confused argument lists with object shorthand, overlapped later import clauses that reused a name, and produced overlapping template-literal replacements when several imports appeared in one template. Each case now has a permanent reproducer.</p>
+<p>Live-import rewriting initially rewrote local loop bindings, confused argument lists with object shorthand, overlapped later import clauses that reused a name, produced overlapping template replacements, and consumed the next statement after a semicolonless import. Each case now has a permanent reproducer.</p>
 <h2>TSX preserve gate</h2>
 <p>TSX tests cover fragments, typed arrow components, nested ternaries, generic components, spread attributes, regexes with angle brackets and malformed nesting. The parser must distinguish TSX-safe generic arrows such as <code>&lt;T,&gt;</code> from JSX elements.</p>
 <h2>Ruthless negative testing</h2>
