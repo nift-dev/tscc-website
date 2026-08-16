@@ -128,7 +128,7 @@ make
 <code class="language-bash">tscc --module commonjs src/main.ts --outDir dist</code>
 </pre> <p>The CommonJS path is executable and differential-tested against <code>tsc --module commonjs</code>, including live imported reads, re-exports and cycles. It is still treated as a growing compatibility surface, not a declaration that every TypeScript module edge case is finished.</p> <h2>TSX preserve</h2> <pre>
 <code class="language-bash">tscc --jsx preserve src/App.tsx --outDir dist</code>
-</pre> <p> <code>.tsx</code> becomes <code>.jsx</code>: TypeScript syntax is erased while JSX remains for a later JSX-aware transform or bundler.</p> <h2>Where type checking fits</h2> <p>tscc now checks its first bounded semantic family: explicit primitive variable annotations against direct primitive literal initializers. It still answers “can I parse/transpile this program?” far more broadly than “is this entire program type-correct?”. Keep a separate <code>tsc --noEmit</code> check in CI for general semantic guarantees.</p> <pre>
+</pre> <p> <code>.tsx</code> becomes <code>.jsx</code>: TypeScript syntax is erased while JSX remains for a later JSX-aware transform or bundler.</p> <h2>Where type checking fits</h2> <p>tscc now checks a bounded primitive family across literals, bound identifiers, arithmetic expressions, assignments and const reassignment. It still answers “can I parse/transpile this program?” far more broadly than “is this entire program type-correct?”. Keep a separate <code>tsc --noEmit</code> check in CI for general semantic guarantees.</p> <pre>
 <code class="language-json">{
   "scripts": {
     "check": "tsc --noEmit -p tsconfig.json",
