@@ -123,3 +123,7 @@ The homepage remains `/index.html` and the documentation landing page remains
 live under `/docs/*.html`, even when a page does not use a docs-specific template.
 Keep tracked names, `@pathto(...)` references, authored content paths, and generated
 output aligned with this rule when adding or renaming pages.
+
+## Desktop table-fit checkpoint (2026-08-18)
+
+The benchmark table now uses a fixed, wrapping desktop layout so it remains inside normal viewport widths. Keep benchmark columns wrap-safe; horizontal overflow should not be required on ordinary desktop widths.
