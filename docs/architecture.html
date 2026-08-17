@@ -56,8 +56,8 @@
              .copy:after{content:'⧉';font-size:18px}
              .copy.ok:after{content:'✓';color:var(--codeink)}
              code:not(pre code){font:650 .88em ui-monospace,monospace;background:var(--panel);border:1px solid var(--line);padding:.1em .3em}
-             .bench{width:100%;border-collapse:collapse;margin:22px 0}
-             .bench td,.bench th{padding:12px;border-bottom:1px solid var(--line);text-align:left}
+             .bench{width:100%;max-width:100%;border-collapse:collapse;margin:22px 0;table-layout:fixed}
+             .bench td,.bench th{padding:12px;border-bottom:1px solid var(--line);text-align:left;overflow-wrap:anywhere;word-break:normal}
              .bench th{font:800 .68rem ui-monospace,monospace;color:var(--mut);text-transform:uppercase}
              .bench strong{color:var(--accent)}
              .call{border:1px solid var(--line);border-left:6px solid var(--accent);background:var(--panel);padding:20px 24px;margin:28px 0}
