@@ -104,4 +104,6 @@ footer{flex-direction:column;gap:6px}
 .themes{margin-left:auto}
 .codecard{box-shadow:8px 8px 0 var(--accent)}
 }
-
+/* Keep prose links unmistakable while preserving button/navigation styling. */
+article a:not(.btn), main p a:not(.btn), main li a:not(.btn), main td a:not(.btn), footer a{color:var(--accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+article a:not(.btn):hover, main p a:not(.btn):hover, main li a:not(.btn):hover, main td a:not(.btn):hover, footer a:hover{text-decoration-thickness:2px}
