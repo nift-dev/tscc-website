@@ -127,3 +127,8 @@ output aligned with this rule when adding or renaming pages.
 ## Desktop table-fit checkpoint (2026-08-18)
 
 The benchmark table now uses a fixed, wrapping desktop layout so it remains inside normal viewport widths. Keep benchmark columns wrap-safe; horizontal overflow should not be required on ordinary desktop widths.
+
+## Memory-safety living record checkpoint (2026-08-18)
+
+- `docs/memory-safety` is the dedicated living compiler lifetime/leak record beside Battle Tested. Establish the baseline before the semantic checker and retained compiler graphs become substantially larger.
+- The page currently describes planned work only. Future results must record the exact compiler commit/toolchain/workload and distinguish confirmed leaks from allocator/runtime high-water behavior.

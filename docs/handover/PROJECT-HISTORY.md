@@ -305,3 +305,7 @@ Normalized the tscc website to the same public documentation shape used by nift.
 ## 2026-08-18 — Desktop table fit
 
 Made the benchmark table wrap safely within its documentation column so sibling-site desktop table audits can remain overflow-free.
+
+## 2026-08-18 — Memory/resource-safety living documentation
+
+Added a dedicated Memory & resource safety documentation page and linked it from Battle Tested/navigation. The page is deliberately a maintained evidence record: the dedicated leak/soak campaign is still marked planned, and future runs should publish exact reproducible workload/toolchain/result metadata rather than converting one run into a timeless claim.

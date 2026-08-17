@@ -56,6 +56,11 @@
       "template": "templates/template.html"
     },
     {
+      "name": "docs/memory-safety",
+      "title": "Memory & resource safety",
+      "template": "templates/template.html"
+    },
+    {
       "name": "docs/ai-opinion",
       "title": "AI opinion",
       "template": "templates/template.html"
