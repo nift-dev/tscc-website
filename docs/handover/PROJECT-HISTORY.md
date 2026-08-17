@@ -297,3 +297,7 @@ describe planned behavior as current behavior
 
 ---
 
+
+## 2026-08-18 — Documentation URL normalization
+
+Normalized the tscc website to the same public documentation shape used by nift.dev: `/docs.html` remains the landing page and every secondary documentation, evidence, AI and design page now lives under `/docs/*.html`. Authored content moved under `content/docs/`, tracked names and `@pathto(...)` references were reconciled, stale root-level generated pages/metadata were removed, and current GitHub links were aligned with the `nift-dev` organization.

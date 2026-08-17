@@ -115,3 +115,11 @@ Detailed tscc website history lives at
 `docs/handover/PROJECT-HISTORY.md`, including compatibility wording,
 support evidence, benchmark integrity, production-support gates, and the living
 roadmap.
+
+## Documentation URL layout
+
+The homepage remains `/index.html` and the documentation landing page remains
+`/docs.html`, matching nift.dev. All secondary documentation/evidence/design pages
+live under `/docs/*.html`, even when a page does not use a docs-specific template.
+Keep tracked names, `@pathto(...)` references, authored content paths, and generated
+output aligned with this rule when adding or renaming pages.

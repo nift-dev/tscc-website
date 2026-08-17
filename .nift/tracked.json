@@ -11,57 +11,57 @@
       "template": "templates/template.html"
     },
     {
-      "name": "getting-started",
+      "name": "docs/getting-started",
       "title": "Getting started",
       "template": "templates/template.html"
     },
     {
-      "name": "cli",
+      "name": "docs/cli",
       "title": "CLI and tsconfig",
       "template": "templates/template.html"
     },
     {
-      "name": "language-support",
+      "name": "docs/language-support",
       "title": "Language support",
       "template": "templates/template.html"
     },
     {
-      "name": "modules-tsx",
+      "name": "docs/modules-tsx",
       "title": "Modules and TSX",
       "template": "templates/template.html"
     },
     {
-      "name": "architecture",
+      "name": "docs/architecture",
       "title": "Architecture",
       "template": "templates/template.html"
     },
     {
-      "name": "production-readiness",
+      "name": "docs/production-readiness",
       "title": "Production readiness",
       "template": "templates/template.html"
     },
     {
-      "name": "roadmap",
+      "name": "docs/roadmap",
       "title": "Roadmap",
       "template": "templates/template.html"
     },
     {
-      "name": "benchmarks",
+      "name": "docs/benchmarks",
       "title": "Benchmarks",
       "template": "templates/template.html"
     },
     {
-      "name": "battle-tested",
+      "name": "docs/battle-tested",
       "title": "Battle tested",
       "template": "templates/template.html"
     },
     {
-      "name": "ai-opinion",
+      "name": "docs/ai-opinion",
       "title": "AI opinion",
       "template": "templates/template.html"
     },
     {
-      "name": "ai-development",
+      "name": "docs/ai-development",
       "title": "AI development",
       "template": "templates/template.html"
     }
