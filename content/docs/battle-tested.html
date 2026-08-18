@@ -18,7 +18,7 @@
 <p>parser, runtime, project, TSX, CommonJS and independent regression layers.</p>
 </div>
 </div>
-<p>Compiler-lifetime Checkpoint 5A is green under sanitizers, repeated project/module pressure and settled native RSS evidence; independent Valgrind confirmation remains the final component of this checkpoint.</p><div class="call"><strong>Memory evidence has its own living record.</strong><p>The <a href="@pathto('docs/memory-safety')">Memory &amp; resource safety</a> page tracks the upcoming compiler lifetime/leak campaign separately from syntax and semantic correctness.</p></div>
+<p>Compiler-lifetime Checkpoint 5 is complete: sanitizer lifetime pressure, repeated project/module success/failure/recovery, settled native RSS evidence and independent Valgrind confirmation are all retained.</p><div class="call"><strong>Memory evidence has its own living record.</strong><p>The <a href="@pathto('docs/memory-safety')">Memory &amp; resource safety</a> page tracks the upcoming compiler lifetime/leak campaign separately from syntax and semantic correctness.</p></div>
 <h2>The independent regression suite</h2>
 <p>The suite is intentionally kept compiler-agnostic. Cases describe source, expected category, emitted constraints and/or runtime output. <code>tsc --noCheck</code> establishes syntax validity; full <code>tsc</code> distinguishes semantic-checker-only failures; Node validates executable output where appropriate.</p>
 <h3>Why the semantic-only skips matter</h3>

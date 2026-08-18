@@ -313,3 +313,7 @@ Added a dedicated Memory & resource safety documentation page and linked it from
 ## 2026-08-18 — tscc memory-safety Checkpoint 5A
 
 Established the compiler-lifetime baseline before broader checker growth. The maintained corpus repeatedly creates and releases parser/AST, semantic, binder, type, checker and emitter state across successful, malformed, CommonJS and TSX inputs. Eighty sanitizer iterations passed with no finding; native repeated-run RSS remained in a narrow 4,908–5,108 KiB band; and 120-file graph/cycle/missing-module/recovery pressure passed under sanitizer and native compilers. Independent Valgrind confirmation remains Checkpoint 5B.
+
+## 2026-08-18 — tscc memory-safety Checkpoint 5 completed
+
+Reconciled the independent Valgrind confirmation. On Linux 7.0.0-29 x86-64 at tscc commit `d96419e`, Valgrind 3.26.0 ran 40 maintained compiler-lifetime iterations with 0 errors, 0 bytes in use at exit, and 25,003 allocations matched by 25,003 frees. Combined with the sanitizer, native RSS, project/module graph and regression evidence from 5A, this closes tscc's compiler-lifetime baseline and moves the broader campaign to cross-project integration.
