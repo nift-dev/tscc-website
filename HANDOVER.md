@@ -132,3 +132,8 @@ The benchmark table now uses a fixed, wrapping desktop layout so it remains insi
 
 - `docs/memory-safety` is the dedicated living compiler lifetime/leak record beside Battle Tested. Establish the baseline before the semantic checker and retained compiler graphs become substantially larger.
 - The page currently describes planned work only. Future results must record the exact compiler commit/toolchain/workload and distinguish confirmed leaks from allocator/runtime high-water behavior.
+
+## tscc memory-safety Checkpoint 5A (2026-08-18)
+
+- Public memory documentation now records the first compiler-lifetime baseline: 80 sanitizer-backed in-process iterations, settled native RSS across repeated lifetime runs, and repeated 120-file project/module graph success/failure/recovery pressure at tscc commit `a05d3d8`.
+- Checkpoint 5B remains independent Valgrind confirmation. Do not describe Checkpoint 5 as complete until that evidence is returned and reconciled.

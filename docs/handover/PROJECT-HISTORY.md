@@ -309,3 +309,7 @@ Made the benchmark table wrap safely within its documentation column so sibling-
 ## 2026-08-18 — Memory/resource-safety living documentation
 
 Added a dedicated Memory & resource safety documentation page and linked it from Battle Tested/navigation. The page is deliberately a maintained evidence record: the dedicated leak/soak campaign is still marked planned, and future runs should publish exact reproducible workload/toolchain/result metadata rather than converting one run into a timeless claim.
+
+## 2026-08-18 — tscc memory-safety Checkpoint 5A
+
+Established the compiler-lifetime baseline before broader checker growth. The maintained corpus repeatedly creates and releases parser/AST, semantic, binder, type, checker and emitter state across successful, malformed, CommonJS and TSX inputs. Eighty sanitizer iterations passed with no finding; native repeated-run RSS remained in a narrow 4,908–5,108 KiB band; and 120-file graph/cycle/missing-module/recovery pressure passed under sanitizer and native compilers. Independent Valgrind confirmation remains Checkpoint 5B.
