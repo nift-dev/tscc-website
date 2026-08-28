@@ -1,20 +1,38 @@
+<button class="docs-menu-toggle" type="button" aria-expanded="false" aria-controls="docs-mobile-nav" data-docs-menu-toggle aria-label="Open documentation menu"><span></span><span></span></button>
 <aside class="side">
-<b>Start</b>
+<div class="docs-nav-group" data-docs-group>
+<button class="docs-nav-toggle" type="button" aria-expanded="false"><span>Start</span><i aria-hidden="true"></i></button>
+<div class="docs-nav-links" hidden>
 <a href="@pathto('docs')">Overview</a>
 <a href="@pathto('docs/getting-started')">Getting started</a>
 <a href="@pathto('docs/cli')">CLI &amp; tsconfig</a>
-<b>Compiler</b>
+</div>
+</div>
+<div class="docs-nav-group" data-docs-group>
+<button class="docs-nav-toggle" type="button" aria-expanded="false"><span>Compiler</span><i aria-hidden="true"></i></button>
+<div class="docs-nav-links" hidden>
 <a href="@pathto('docs/language-support')">Language support</a>
 <a href="@pathto('docs/modules-tsx')">Modules &amp; TSX</a>
 <a href="@pathto('docs/architecture')">Architecture</a>
-<b>Direction</b>
+</div>
+</div>
+<div class="docs-nav-group" data-docs-group>
+<button class="docs-nav-toggle" type="button" aria-expanded="false"><span>Direction</span><i aria-hidden="true"></i></button>
+<div class="docs-nav-links" hidden>
 <a href="@pathto('docs/production-readiness')">Production readiness</a>
 <a href="@pathto('docs/roadmap')">Roadmap</a>
-<b>Evidence</b>
+</div>
+</div>
+<div class="docs-nav-group" data-docs-group>
+<button class="docs-nav-toggle" type="button" aria-expanded="false"><span>Evidence</span><i aria-hidden="true"></i></button>
+<div class="docs-nav-links" hidden>
 <a href="@pathto('docs/benchmarks')">Benchmarks</a>
 <a href="@pathto('docs/battle-tested')">Battle tested</a>
 <a href="@pathto('docs/memory-safety')">Memory &amp; resource safety</a>
 <a href="@pathto('docs/ai-opinion')">AI opinion</a>
 <a href="@pathto('docs/ai-development')">AI development</a>
 <a class="external" href="https://github.com/nift-dev/tscc-website">Website source ↗</a>
+</div>
+</div>
 </aside>
+<div class="docs-mobile-nav" id="docs-mobile-nav" data-docs-mobile-nav hidden></div>
