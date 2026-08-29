@@ -166,3 +166,7 @@ The benchmark table now uses a fixed, wrapping desktop layout so it remains insi
 
 Public object support now includes nested shapes, chained reads and path-specific
 diagnostics. Extra source properties are intentionally structurally compatible.
+## CP24 expression identity (2026-08-30)
+
+The checker now consumes CompilationUnit-owned expression nodes. Describe this
+as architecture, not broader TypeScript expression compatibility.
