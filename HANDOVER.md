@@ -92,6 +92,11 @@ After a validated compiler checkpoint:
 
 Internal refactors with no observable effect normally need no public copy change.
 
+The coordinated compiler campaign is now public development context. Keep the
+site synchronized with accepted checkpoint state without presenting planned
+JS++ integration as a current runtime dependency. CP1 settles test-only
+integration first and protects normal tscc builds from accidental JS++ linkage.
+
 ## Product boundaries
 
 tscc is a sibling of Nift and Minify++, not “Nift's compiler.” Do not force common

@@ -35,5 +35,8 @@ CLI             tsc-like user boundary</code>
 <p>A genuine checker will require durable syntax identity, symbols, scopes, declarations, type objects, inference, assignability and control-flow facts. Those should grow as semantic layers over the syntax/project foundation rather than hide inside emitter heuristics. The likely architecture is hybrid: semantic structure owns meaning while validated source edits keep preserving unchanged JavaScript bytes.</p>
 <h2>Known architectural pressure</h2>
 <p>The shipped compiler driver and the tested <code>ModuleGraph</code> still represent parallel traversal paths. Configuration extraction remains regex-based, some binding forms still rely on transform-local shadow logic, and there are no module export/type tables. Program preparation now precedes explicit emit policy and individual files are staged before rename, but ordinary filesystems cannot make the whole rename sequence transactional. These are explicit engineering pressures, not invisible guarantees.</p>
+<h2>Boundary with JS++</h2>
+<p>tscc owns TypeScript syntax, binding, checking, diagnostics, project/module compilation and JavaScript emission. JS++ owns executable ECMAScript parsing, bytecode and runtime semantics. CP1 makes that separation an aggregate repository check: the normal compiler cannot accidentally include <code>js.h</code>, link <code>libjs</code> or compile JS++ private sources.</p>
+<p>The first integration will be test-only, running eligible tscc output under Node and JS++. CommonJS lowering remains a compiler transform in tscc; ECMAScript module execution belongs to JS++.</p>
 </article>
 </div>
