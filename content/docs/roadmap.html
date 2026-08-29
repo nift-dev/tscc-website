@@ -14,7 +14,7 @@
     <div class="road"><strong>07</strong><div><h3>Production hardening</h3><p>Validate real projects, memory, fuzzing, sanitizers, platforms, diagnostics, packaging, releases and eventually incremental/watch behavior.</p></div></div>
 
     <h2>Current checkpoint</h2>
-    <div class="road"><strong>CP4</strong><div><h3>One program graph complete</h3><p>One production graph now owns roots, canonical file identity, dependency edges, durable compilation units and graph diagnostics. The duplicate driver traversal is retired.</p></div></div>
+    <div class="road"><strong>CP5</strong><div><h3>Durable syntax identity complete</h3><p>Structural nodes now retain stable IDs, parent relationships, exact token/byte spans and explicit recovery identity through checking and emission.</p></div></div>
     <p>Steps 02–04 are now underway rather than merely aspirational: tscc has a source-preserving semantic overlay, bounded lexical symbols including static imports, canonical primitive types, precedence-aware primitive expressions, assignment/mutability checking, and explicit program output policy. Clean optimized, sanitizer and committed-archive gates pass across the 519-case contract.</p>
     <p>The one-program/module-graph checkpoint is complete. The likely next vertical slice is file-local function signatures and call checking. That supplies callable type vocabulary before module export tables attempt cross-file propagation.</p>
 
