@@ -170,3 +170,8 @@ diagnostics. Extra source properties are intentionally structurally compatible.
 
 The checker now consumes CompilationUnit-owned expression nodes. Describe this
 as architecture, not broader TypeScript expression compatibility.
+
+## CP26 structured expressions (2026-08-30)
+
+The durable expression model now owns explicit node kinds, operators and child
+identity for the bounded grammar. The independent 505/0/24 contract is unchanged.
