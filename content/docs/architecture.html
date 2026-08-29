@@ -40,5 +40,6 @@ CLI             tsc-like user boundary</code>
 <h2>Boundary with JS++</h2>
 <p>tscc owns TypeScript syntax, binding, checking, diagnostics, project/module compilation and JavaScript emission. JS++ owns executable ECMAScript parsing, bytecode and runtime semantics. CP1 makes that separation an aggregate repository check: the normal compiler cannot accidentally include <code>js.h</code>, link <code>libjs</code> or compile JS++ private sources.</p>
 <p>The first integration will be test-only, running eligible tscc output under Node and JS++. CommonJS lowering remains a compiler transform in tscc; ECMAScript module execution belongs to JS++.</p>
+<p>JS++ has now reached its first bounded primitive bytecode/VM slice, but tscc dual-runtime execution is not active yet. Selecting and classifying the emitted-JavaScript intersection remains a separate integration checkpoint.</p>
 </article>
 </div>
