@@ -200,3 +200,9 @@ Public counts are now 515/0/24 across 539 cases. Callable variables and bounded
 contextual arrow/function expressions are supported in checked initializer
 contexts. Do not imply overloads, generics, full inference or universal
 expression-statement checking.
+
+## CP33 whole-program calls (2026-08-30)
+
+Callable argument and arity checks now apply outside initializer contexts,
+including standalone, branch and throw uses. Public evidence is 519/0/24 across
+543 cases; do not generalize this to complete statement operator checking.
