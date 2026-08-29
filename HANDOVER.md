@@ -181,3 +181,9 @@ identity for the bounded grammar. The independent 505/0/24 contract is unchanged
 Public object support now includes basic aliases/interfaces and compatible
 interface merging. The 533-case contract is 509/0/24; keep indexed/call
 signatures, inheritance, generics and classes explicitly unsupported.
+
+## CP30 expression typing (2026-08-30)
+
+The checker now consumes structured expression children directly rather than a
+retained token-sequence compatibility view. This changes architecture only; the
+533-case contract remains 509/0/24.
