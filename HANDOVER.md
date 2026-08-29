@@ -220,3 +220,9 @@ Public evidence is 529/0/24 across 553 cases. Direct inline arrow and function
 callbacks passed as call arguments receive contextual parameter and result types.
 Keep the wording bounded to call arguments; do not claim universal recursive
 expression ownership, overloads or generics.
+
+## CP36 callable object members (2026-08-29)
+
+Public evidence is 535/0/24 across 559 cases. Object method signatures,
+function-valued properties and bounded interface inheritance share the canonical
+callable/object model. Do not imply index/call signatures, generics or classes.
