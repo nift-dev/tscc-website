@@ -232,3 +232,9 @@ callable/object model. Do not imply index/call signatures, generics or classes.
 Public evidence is 539/0/24 across 563 cases. Contextual callbacks are supported
 through direct parentheses and structural object-property values. Do not claim
 that every statement form yet owns durable expression children.
+
+## CP38 index and callable object signatures (2026-08-29)
+
+Public evidence is 545/0/24 across 569 cases. Bounded string/number index
+signatures and single callable object signatures share canonical structural and
+function types. Do not imply computed access, overload sets, mapped or generics.
