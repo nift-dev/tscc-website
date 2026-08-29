@@ -4,7 +4,7 @@
 <div class="ey">Compiler</div>
 <h1>Language support</h1>
 <p class="lead">The current compiler surface is broad enough for serious experimentation, but the implementation categories matter: some syntax is erased, some produces runtime transforms, some is preserved, and semantic checking is deliberately bounded.</p>
-<div class="call"><strong>CP13 complete:</strong> support is recorded in a machine-checked matrix across parse, bind, type, lower, emit, runtime, diagnostic and project dimensions. The validator reconciles the 521-case oracle totals and the bounded function-signature slice.</div>
+<div class="call"><strong>CP14 complete:</strong> the machine-checked matrix now reconciles 523 cases, including canonical literal/union/nullish identities and bounded assignability.</div>
 <h2>Type syntax erasure</h2>
 <p>Covered areas include annotations, return types, interfaces, type aliases, unions/intersections, tuples, mapped/conditional/indexed/template-literal types, <code>keyof</code>/<code>typeof</code>/import queries, generics and defaults, assertions, <code>satisfies</code>, non-null assertions, type predicates, assertion signatures and type-only module forms.</p>
 <h2>Functions and classes</h2>
