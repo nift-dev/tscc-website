@@ -6,11 +6,11 @@
 <p class="lead">tscc is tested in layers because no single oracle is enough. Parser/unit tests isolate compiler internals; runtime differentials compare emitted behavior; project/module tests exercise graphs; and an independent compiler-agnostic regression suite arbitrates syntax against TypeScript itself.</p>
 <div class="cards">
 <div class="card">
-<strong>519</strong>
+<strong>521</strong>
 <p>independent TS→JS regression cases in the current checkpoint.</p>
 </div>
 <div class="card">
-<strong>492 / 0 / 27</strong>
+<strong>495 / 0 / 26</strong>
 <p>pass / current-scope fail / semantic-only skip.</p>
 </div>
 <div class="card">
@@ -22,7 +22,7 @@
 <h2>The independent regression suite</h2>
 <p>The suite is intentionally kept compiler-agnostic. Cases describe source, expected category, emitted constraints and/or runtime output. <code>tsc --noCheck</code> establishes syntax validity; full <code>tsc</code> distinguishes semantic-checker-only failures; Node validates executable output where appropriate.</p>
 <h3>Why the semantic-only skips matter</h3>
-<p>Those 27 cases are not swept under the rug. They explicitly mark programs whose syntax can be transpiled but whose type correctness lies beyond tscc's current checker slice. Seven semantic contracts now pass, covering literal and bound-identifier mismatch, primitive expressions, direct/compound assignment and const mutability. That gradual promotion is the model for semantic development.</p>
+<p>Those 26 cases are not swept under the rug. They explicitly mark programs whose syntax can be transpiled but whose type correctness lies beyond tscc's current checker slice. Ten semantic contracts now pass, adding typed call arguments, arity and annotated returns to primitive expressions, assignment and const mutability.</p>
 <h2>The checker gate</h2>
 <p>Focused checker, type-model and binder tests plus the independent corpus protect primitive declarations/expressions, lexical shadowing, assignment/mutability, catch/loop scopes and static import identity. Unsupported semantic families remain outside the claimed contract rather than being rejected by parser guesses.</p>
 <h2>Parser / AST smoke</h2>
