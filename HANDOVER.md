@@ -175,3 +175,9 @@ as architecture, not broader TypeScript expression compatibility.
 
 The durable expression model now owns explicit node kinds, operators and child
 identity for the bounded grammar. The independent 505/0/24 contract is unchanged.
+
+## CP28 reusable object declarations (2026-08-30)
+
+Public object support now includes basic aliases/interfaces and compatible
+interface merging. The 533-case contract is 509/0/24; keep indexed/call
+signatures, inheritance, generics and classes explicitly unsupported.
