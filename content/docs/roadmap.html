@@ -20,6 +20,7 @@
     <div class="road"><strong>CP10</strong><div><h3>Declaration and scope slice complete</h3><p>Arrow parameters/scopes, flat destructuring, class names, captures, shadowing and hoisted function identity now belong to the binder.</p></div></div>
     <div class="road"><strong>CP13</strong><div><h3>Bounded function signatures complete</h3><p>Typed ordinary declarations now carry durable parameter/result signatures into argument, arity and annotated-return checking.</p></div></div>
     <div class="road"><strong>CP14</strong><div><h3>Core type algebra complete</h3><p>Literal, normalized union, null and undefined types now have canonical identities and bounded assignability.</p></div></div>
+    <div class="road"><strong>CP17</strong><div><h3>Bounded branch narrowing complete</h3><p>Strict <code>typeof</code> and literal/nullish equality guards now create then-branch facts that restore at the lexical boundary.</p></div></div>
     <p>Steps 02–04 are now underway rather than merely aspirational: tscc has a source-preserving semantic overlay, bounded lexical symbols including static imports, canonical primitive/function facts, expression, assignment/mutability and ordinary-call checking, and explicit program output policy. Clean optimized and regression gates pass across the 521-case contract.</p>
     <p>The next type-system slice should be chosen from literal/union foundations or structural object properties using the new callable vocabulary as a stable boundary. Overloads, generics and contextual function typing remain explicit later work.</p>
 

@@ -49,7 +49,7 @@ keep it current.
 
 ## Current evidence and claims
 
-The site currently advertises 523 independent cases (497 pass, zero fail, 26
+The site currently advertises 525 independent cases (499 pass, zero fail, 26
 semantic skips) and dated five-run local medians for startup, 100/500 basic files,
 and 100-file feature-heavy/advanced fixtures. The August 2026 snapshot uses
 TypeScript 7.0.2 and must be treated as checkpoint evidence rather than a stable
