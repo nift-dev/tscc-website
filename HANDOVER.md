@@ -162,3 +162,7 @@ The benchmark table now uses a fixed, wrapping desktop layout so it remains insi
 - External Checkpoint 5B passed at tscc commit `d96419e`: Valgrind 3.26.0 completed 40 maintained compiler-lifetime iterations with 0 errors, 0 bytes in use at exit, and all 25,003 allocations freed.
 - Public Memory & Resource Safety and Battle Tested pages now describe the compiler-lifetime baseline as complete while keeping the claim scoped to the maintained workloads, not TypeScript completeness.
 - Exact Valgrind evidence is retained in the tscc source tree. The wider campaign proceeds to cross-project integration.
+## CP22 / TC8C (2026-08-30)
+
+Public object support now includes nested shapes, chained reads and path-specific
+diagnostics. Extra source properties are intentionally structurally compatible.
