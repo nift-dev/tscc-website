@@ -4,7 +4,7 @@
 <div class="ey">Compiler</div>
 <h1>Language support</h1>
 <p class="lead">The current compiler surface is broad enough for serious experimentation, but the implementation categories matter: some syntax is erased, some produces runtime transforms, some is preserved, and semantic checking is deliberately bounded.</p>
-<div class="call"><strong>CP17 complete:</strong> the machine-checked matrix now reconciles 525 cases, including bounded strict-equality and <code>typeof</code> then-branch narrowing with lexical restoration.</div>
+<div class="call"><strong>CP20 complete:</strong> the machine-checked matrix reconciles 525 cases at 501 pass, zero fail and 24 deliberate semantic skips, including bounded flat object/property checking.</div>
 <h2>Type syntax erasure</h2>
 <p>Covered areas include annotations, return types, interfaces, type aliases, unions/intersections, tuples, mapped/conditional/indexed/template-literal types, <code>keyof</code>/<code>typeof</code>/import queries, generics and defaults, assertions, <code>satisfies</code>, non-null assertions, type predicates, assertion signatures and type-only module forms.</p>
 <h2>Functions and classes</h2>
@@ -27,7 +27,7 @@ class Point {
 <p>tscc now has a separate checker pass and a bounded primitive slice. Explicit <code>number</code>, <code>string</code>, or <code>boolean</code> facts flow through literals, bound identifiers, parentheses, unary operators, additive/multiplicative expressions and direct or compound assignment. Reassigning a bound <code>const</code> is diagnosed.</p>
 <pre><code class="language-typescript">const port: number = 8080;     // accepted
 const port: number = "8080";   // diagnostic</code></pre>
-<p>The binder owns bounded declarations and scopes. The type store now carries primitive identities plus ordinary-function parameter/result signatures; direct calls check arguments, required/rest arity and annotated returns. Callable variables/function expressions, properties, unions, object types, inference, overload resolution, control-flow narrowing, generic instantiation and cross-module type propagation remain future territory.</p>
+<p>The binder owns bounded declarations and scopes. The type store carries primitive, literal, union, function-signature and canonical flat object identities. Flat object annotations/literals support named reads, required/optional structural assignment and readonly write diagnostics. Nested/indexed shapes, excess-property freshness, class/interface integration, callable variables, overloads, full flow joins, generics and cross-module propagation remain future territory.</p>
 <div class="call">
 <strong>Practical consequence:</strong> outside the explicitly implemented primitive slice, a program can transpile successfully with tscc and still be rejected by full <code>tsc</code>. The independent suite tracks those as semantic-only skips rather than false parser failures.</div>
 </article>

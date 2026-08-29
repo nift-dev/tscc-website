@@ -108,6 +108,9 @@ new TypeScript compatibility claim. Keep that distinction intact.
 CP19/TC8A likewise adds canonical object-shape infrastructure without changing
 the source-language support boundary; CP20 owns bounded structural checking.
 
+CP20 now supports only the documented flat structural slice. Keep the 501/0/24
+count and the nested/indexed/freshness/class limitations visible.
+
 ## Product boundaries
 
 tscc is a sibling of Nift and Minify++, not “Nift's compiler.” Do not force common
