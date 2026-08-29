@@ -49,7 +49,7 @@ keep it current.
 
 ## Current evidence and claims
 
-The site currently advertises 525 independent cases (499 pass, zero fail, 26
+The site currently advertises 553 independent cases (529 pass, zero fail, 24
 semantic skips) and dated five-run local medians for startup, 100/500 basic files,
 and 100-file feature-heavy/advanced fixtures. The August 2026 snapshot uses
 TypeScript 7.0.2 and must be treated as checkpoint evidence rather than a stable
@@ -213,3 +213,10 @@ Typed arrow and function expressions can now infer callable variable identities;
 contextual optional/default/rest forms are supported. Public evidence is
 525/0/24 across 549 cases. Inline callback arrows, overloads and generics remain
 unsupported and must not be implied by the callable wording.
+
+## CP35 nested contextual callbacks (2026-08-29)
+
+Public evidence is 529/0/24 across 553 cases. Direct inline arrow and function
+callbacks passed as call arguments receive contextual parameter and result types.
+Keep the wording bounded to call arguments; do not claim universal recursive
+expression ownership, overloads or generics.
