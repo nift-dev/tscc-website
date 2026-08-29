@@ -105,6 +105,9 @@ CP3/TC1 adds durable per-file compiler ownership through emission. The public
 architecture and roadmap pages describe this as an internal foundation, not a
 new TypeScript compatibility claim. Keep that distinction intact.
 
+CP19/TC8A likewise adds canonical object-shape infrastructure without changing
+the source-language support boundary; CP20 owns bounded structural checking.
+
 ## Product boundaries
 
 tscc is a sibling of Nift and Minify++, not “Nift's compiler.” Do not force common
