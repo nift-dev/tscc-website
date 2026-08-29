@@ -193,3 +193,10 @@ retained token-sequence compatibility view. This changes architecture only; the
 Callable aliases, annotated variables and function declarations now share
 canonical signature identities. This is type-model infrastructure; do not claim
 callable variables or contextual typing before CP32 evidence.
+
+## CP32 callable expressions (2026-08-30)
+
+Public counts are now 515/0/24 across 539 cases. Callable variables and bounded
+contextual arrow/function expressions are supported in checked initializer
+contexts. Do not imply overloads, generics, full inference or universal
+expression-statement checking.

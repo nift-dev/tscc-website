@@ -24,7 +24,7 @@
     </ul>
 
     <h2>Why the answer is still “not yet”</h2>
-    <p>A production TypeScript compiler needs much more than valid JavaScript output. tscc now has bounded binder-owned identity, durable primitive and ordinary-function signature facts, expression/assignment checks, call argument/arity checks and annotated-return diagnostics. It still lacks composite and callable-expression types, inference, control-flow narrowing, overload resolution, declaration merging, library processing and broad semantic diagnostics.</p>
+    <p>A production TypeScript compiler needs much more than valid JavaScript output. tscc now has bounded binder-owned identity, durable primitive, object and callable type facts, expression/assignment checks, call argument/arity checks and contextual function-result diagnostics. It still lacks broad inference and control-flow analysis, overload resolution, generics, object method/index/class families, library processing and broad semantic diagnostics.</p>
     <p>Its project layer also has intentionally narrow relative resolution: package and <code>node_modules</code> resolution, path aliases, declaration files and the wider TypeScript configuration surface remain outside the current implementation.</p>
 
     <h2>Operational gaps under active scrutiny</h2>
