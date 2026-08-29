@@ -206,3 +206,10 @@ expression-statement checking.
 Callable argument and arity checks now apply outside initializer contexts,
 including standalone, branch and throw uses. Public evidence is 519/0/24 across
 543 cases; do not generalize this to complete statement operator checking.
+
+## CP34 callable inference (2026-08-30)
+
+Typed arrow and function expressions can now infer callable variable identities;
+contextual optional/default/rest forms are supported. Public evidence is
+525/0/24 across 549 cases. Inline callback arrows, overloads and generics remain
+unsupported and must not be implied by the callable wording.
