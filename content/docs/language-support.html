@@ -3,7 +3,8 @@
   <article>
 <div class="ey">Compiler</div>
 <h1>Language support</h1>
-<p class="lead">The current compiler surface is broad enough for serious experimentation, but the implementation categories matter: some syntax is erased, some produces runtime transforms, some is preserved, and semantic checking remains mostly absent.</p>
+<p class="lead">The current compiler surface is broad enough for serious experimentation, but the implementation categories matter: some syntax is erased, some produces runtime transforms, some is preserved, and semantic checking is deliberately bounded.</p>
+<div class="call"><strong>CP2 complete:</strong> support is now recorded in a machine-checked matrix across parse, bind, type, lower, emit, runtime, diagnostic and project dimensions. Every listed family names external regression evidence, and the validator reconciles the 519-case oracle totals.</div>
 <h2>Type syntax erasure</h2>
 <p>Covered areas include annotations, return types, interfaces, type aliases, unions/intersections, tuples, mapped/conditional/indexed/template-literal types, <code>keyof</code>/<code>typeof</code>/import queries, generics and defaults, assertions, <code>satisfies</code>, non-null assertions, type predicates, assertion signatures and type-only module forms.</p>
 <h2>Functions and classes</h2>

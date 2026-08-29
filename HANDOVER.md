@@ -97,6 +97,10 @@ site synchronized with accepted checkpoint state without presenting planned
 JS++ integration as a current runtime dependency. CP1 settles test-only
 integration first and protects normal tscc builds from accidental JS++ linkage.
 
+CP2 adds a machine-checked feature matrix in the compiler repository. Public
+support summaries must remain consistent with its eight dimensions and named
+external evidence rather than collapsing parser acceptance into support.
+
 ## Product boundaries
 
 tscc is a sibling of Nift and Minify++, not “Nift's compiler.” Do not force common
