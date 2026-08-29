@@ -187,3 +187,9 @@ signatures, inheritance, generics and classes explicitly unsupported.
 The checker now consumes structured expression children directly rather than a
 retained token-sequence compatibility view. This changes architecture only; the
 533-case contract remains 509/0/24.
+
+## CP31 callable type model (2026-08-30)
+
+Callable aliases, annotated variables and function declarations now share
+canonical signature identities. This is type-model infrastructure; do not claim
+callable variables or contextual typing before CP32 evidence.
