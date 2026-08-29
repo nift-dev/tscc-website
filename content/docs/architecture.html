@@ -6,7 +6,8 @@
 <p class="lead">tscc's performance comes from doing less work and moving it through a small native pipeline—not from one isolated micro-optimization. The semantic campaign now proves binding, durable types and checking can grow without discarding the source-preserving emitter.</p>
 <h2>Major components</h2>
 <pre>
-<code class="language-plaintext">SourceFile      source bytes + line mapping
+<code class="language-plaintext">CompilationUnit durable per-file lifecycle + retained state
+SourceFile      source bytes + line mapping
 Lexer           lexical tokens
 Parser          syntax recognition + erasure/replacements
 Semantic model  durable source/token spans
@@ -29,6 +30,7 @@ CLI             tsc-like user boundary</code>
 <h2>Performance as a regression property</h2>
 <p>Benchmarks run alongside feature work because compiler architecture can become slow gradually. A feature that is correct but doubles many-file latency is treated as an architectural signal, not an unavoidable tax.</p>
 <h2>The bounded semantic seam</h2>
+<p>CP3/TC1 adds a durable per-file <code>CompilationUnit</code>. It retains source, tokens, parsed program, semantic model, binding, type facts, diagnostics and emitted text through output commit. Emission still uses the proven source-edit path, now from retained prepared state rather than anonymous stage-local objects.</p>
 <p>A lightweight semantic overlay retains declarations and lexical regions. The binder gives simple variables, functions, parameters, catch/loop identifiers and static imports stable identity. A program-lifetime type store attaches canonical primitive facts to those symbols, and a precedence-aware checker owns a deliberately small expression/assignment contract.</p>
 <p>CommonJS live-import rewriting is a production consumer of the same identity: supported local shadows resolve to local symbols, while ordinary imported reads resolve positively to import symbols. Unsupported destructuring, arrows, classes and template interpolation still retain a documented compatibility bridge.</p>
 <h2>Future semantic architecture</h2>

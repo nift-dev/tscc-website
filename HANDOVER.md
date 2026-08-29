@@ -101,6 +101,10 @@ CP2 adds a machine-checked feature matrix in the compiler repository. Public
 support summaries must remain consistent with its eight dimensions and named
 external evidence rather than collapsing parser acceptance into support.
 
+CP3/TC1 adds durable per-file compiler ownership through emission. The public
+architecture and roadmap pages describe this as an internal foundation, not a
+new TypeScript compatibility claim. Keep that distinction intact.
+
 ## Product boundaries
 
 tscc is a sibling of Nift and Minify++, not “Nift's compiler.” Do not force common
