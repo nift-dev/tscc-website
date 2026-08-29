@@ -226,3 +226,9 @@ expression ownership, overloads or generics.
 Public evidence is 535/0/24 across 559 cases. Object method signatures,
 function-valued properties and bounded interface inheritance share the canonical
 callable/object model. Do not imply index/call signatures, generics or classes.
+
+## CP37 nested expression ownership (2026-08-29)
+
+Public evidence is 539/0/24 across 563 cases. Contextual callbacks are supported
+through direct parentheses and structural object-property values. Do not claim
+that every statement form yet owns durable expression children.
