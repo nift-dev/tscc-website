@@ -332,3 +332,9 @@ testing and Windows `test-core` passed. Describe this as an evidence-orchestrati
 defect, not a compiler regression. Remove or update the dated incident discussion
 after CI explicitly provisions a pinned suite and a clean rerun passes; do not
 leave a resolved red-run assessment frozen forever.
+
+The website now records compiler commit `bd7313c` as the concrete pinned repair
+and labels its GitHub verification pending. Keep the CI/release score at 6.5
+until the pushed Linux/macOS/Windows run is green, then replace the dated incident
+state with the successful run evidence rather than deleting the reproducibility
+lesson.

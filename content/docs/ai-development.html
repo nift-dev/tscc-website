@@ -67,7 +67,7 @@ reconcile performance, docs, handovers and roadmap</code></pre>
 <p>Architecture checkpoints do not automatically increase language-support counts. That distinction is valuable: internal ownership work can be accepted for reducing future risk without being marketed as compatibility.</p>
 
 <h2>Clean-checkout reproducibility is part of correctness</h2>
-<p>Today’s GitHub failure demonstrates why. Linux and macOS run <code>make test</code>, whose preview validator is referenced as <code>../tscc-regression-suite/validate_preview_contract.py</code>. The workflow checks out only TSCC, so both jobs fail before testing. Windows runs the self-contained <code>test-core</code> target and passes.</p>
+<p>The first post-preview GitHub run demonstrated why. Linux and macOS ran <code>make test</code>, whose preview validator expected a sibling suite that the workflow had not checked out. Both jobs therefore failed before compiler testing, while Windows passed its self-contained <code>test-core</code> target.</p>
 <pre><code class="language-plaintext">developer aggregate workspace
 ├── tscc/
 └── tscc-regression-suite/   ← sibling happens to exist
@@ -75,6 +75,7 @@ reconcile performance, docs, handovers and roadmap</code></pre>
 isolated CI checkout
 └── tscc/                    ← make test cannot find sibling</code></pre>
 <p>This is not evidence of a compiler defect, but it is an evidence-system defect. A serious multi-repository gate must declare and pin its topology. Valid approaches include checking out the sibling suite at a reviewed revision, consuming a versioned suite artifact, or keeping <code>test-core</code> self-contained while an explicitly provisioned aggregate workflow owns cross-repository validation.</p>
+<p>TSCC commit <code>bd7313c</code> applies that rule: <code>TSCC_REGRESSION_SUITE_DIR</code> preserves the ordinary sibling layout locally, while Unix CI checks out exact suite revision <code>c80d065</code> and exports its workspace path. Local validation covers both layouts. The repair remains evidence-pending until a pushed GitHub run completes successfully.</p>
 <div class="call"><strong>Rule:</strong><p>Never weaken an aggregate test merely to make isolated CI green. Provision its dependencies explicitly, pin them, and rerun from a clean environment.</p></div>
 
 <h2>Candidate evidence must be reproducible, not narrated</h2>
@@ -98,7 +99,7 @@ isolated CI checkout
 
 <h2>The post-preview phase changes the AI strategy</h2>
 <p>TCP0-TCP5 proved that the checkpoint method can reach a bounded compiler candidate. The next phase should use fewer roadmap-driven features and more evidence-driven selection:</p>
-<ol><li>repair and rerun clean multi-platform CI;</li><li>collect PC0V external lifetime evidence;</li><li>run TCP6A against pinned real small projects;</li><li>classify parser, binder, checker, resolution, configuration, emit and runtime failures;</li><li>choose the smallest vertical slices that unlock meaningful projects.</li></ol>
+<ol><li>push the pinned CI repair and confirm the clean multi-platform rerun;</li><li>collect PC0V external lifetime evidence;</li><li>run TCP6A against pinned real small projects;</li><li>classify parser, binder, checker, resolution, configuration, emit and runtime failures;</li><li>choose the smallest vertical slices that unlock meaningful projects.</li></ol>
 <p>This is how the project avoids checkpoint eternity. Checkpoints remain the unit of work, but real adoption evidence - not the desire to keep adding features - chooses their content.</p>
 
 <div class="call"><strong>The development philosophy:</strong><p>Move quickly between hypotheses. Move slowly between evidence and public claims. Make every important result reproducible without the original agent’s workspace.</p></div>
