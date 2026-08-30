@@ -1,0 +1,25 @@
+<div class="doc">@input("templates/sidebar.html")<article>
+<div class="ey">Status · TCP0-TCP5</div><h1>Compiler preview contract</h1>
+<p class="lead">The bounded Linux candidate is a concrete preview of tscc as a compiler, not a declaration that it replaces <code>tsc</code> for arbitrary projects.</p>
+<div class="cards">
+<div class="card"><strong>555 / 0 / 24</strong><p>pass / fail / semantic skip across the 579-case independent compiler contract.</p></div>
+<div class="card"><strong>7 / 7</strong><p>frozen module-free emitted output returns the expected result under Node and JS++.</p></div>
+<div class="card"><strong>400</strong><p>deterministic malformed-input mutations complete under the candidate gate.</p></div>
+</div>
+<h2>What TCP0-TCP5 freeze</h2>
+<ul><li>ES2022 output with preserve, esnext or commonjs modules and JSX preserve.</li><li>Machine-readable checked-versus-emitted feature classification and explicit exclusions.</li><li>Stable diagnostic families, deterministic order and pinned non-pretty output.</li><li>Sorted project roots, byte-identical repeat builds and visible unknown-option failures.</li><li>Default partial-success emission and all-or-nothing <code>noEmitOnError</code> policy.</li><li>Relative named-import propagation for bounded callable and structural types.</li><li>A dependency-free production compiler boundary: no Node, <code>tsc</code> or JS++ linkage.</li><li>Reproducible Linux candidate archives, ASan/UBSan, representative projects and a loose startup guardrail.</li></ul>
+<h2>Frozen runtime intersection</h2>
+<pre><code class="language-typescript">type Pair = [number, number];
+interface Box { value: number; }
+
+function total(pair: Pair, box: Box): number {
+  return pair[0] + pair[1] + box.value;
+}
+
+total([10, 12], { value: 20 }); // 42</code></pre>
+<p>The production compiler emits the frozen source and both Node and JS++ return 42. The case deliberately avoids modules because JS++ module loading is not part of its embedded preview.</p>
+<h2>Explicit exclusions</h2>
+<p>Package and <code>node_modules</code> resolution, path mappings, declaration emission, source maps, watch/incremental compilation, full standard-library processing, overload resolution, generics checking, classes, broad narrowing and complete TypeScript inference are not part of this preview.</p>
+<h2>Evidence still ahead</h2>
+<p>PC0V external Valgrind confirmation remains scheduled for Nick's machine. PC0P covers platform packages. TCP6A introduces classified real-project trials. Those results must be recorded before widening deployment or compatibility language.</p>
+</article></div>

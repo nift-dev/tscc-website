@@ -21,6 +21,16 @@
       "template": "templates/template.html"
     },
     {
+      "name": "docs/compiler-examples",
+      "title": "Compiler examples",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "docs/diagnostics",
+      "title": "Diagnostics",
+      "template": "templates/template.html"
+    },
+    {
       "name": "docs/language-support",
       "title": "Language support",
       "template": "templates/template.html"
@@ -38,6 +48,11 @@
     {
       "name": "docs/production-readiness",
       "title": "Production readiness",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "docs/compiler-preview",
+      "title": "Compiler preview contract",
       "template": "templates/template.html"
     },
     {

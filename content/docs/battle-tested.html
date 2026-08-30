@@ -6,11 +6,11 @@
 <p class="lead">tscc is tested in layers because no single oracle is enough. Parser/unit tests isolate compiler internals; runtime differentials compare emitted behavior; project/module tests exercise graphs; and an independent compiler-agnostic regression suite arbitrates syntax against TypeScript itself.</p>
 <div class="cards">
 <div class="card">
-<strong>521</strong>
+<strong>579</strong>
 <p>independent TS→JS regression cases in the current checkpoint.</p>
 </div>
 <div class="card">
-<strong>495 / 0 / 26</strong>
+<strong>555 / 0 / 24</strong>
 <p>pass / current-scope fail / semantic-only skip.</p>
 </div>
 <div class="card">
@@ -18,11 +18,14 @@
 <p>parser, runtime, project, TSX, CommonJS and independent regression layers.</p>
 </div>
 </div>
-<p>Compiler-lifetime Checkpoint 5 is complete: sanitizer lifetime pressure, repeated project/module success/failure/recovery, settled native RSS evidence and independent Valgrind confirmation are all retained.</p><div class="call"><strong>Memory evidence has its own living record.</strong><p>The <a href="@pathto('docs/memory-safety')">Memory &amp; resource safety</a> page tracks the upcoming compiler lifetime/leak campaign separately from syntax and semantic correctness.</p></div>
+<p>Compiler-lifetime Checkpoint 5 is complete: sanitizer lifetime pressure, repeated project/module success/failure/recovery, settled native RSS evidence and independent Valgrind confirmation are all retained. The later preview candidate adds ASan/UBSan, 400 deterministic mutations, frozen positive/negative projects, reproducible archives and a 7/7 Node/JS++ runtime intersection.</p><div class="call"><strong>Memory evidence has its own living record.</strong><p>The <a href="@pathto('docs/memory-safety')">Memory &amp; resource safety</a> page retains the completed lifetime baseline separately from syntax and semantic correctness. PC0V will independently repeat the candidate-era leak check on Nick's machine.</p></div>
 <h2>The independent regression suite</h2>
 <p>The suite is intentionally kept compiler-agnostic. Cases describe source, expected category, emitted constraints and/or runtime output. <code>tsc --noCheck</code> establishes syntax validity; full <code>tsc</code> distinguishes semantic-checker-only failures; Node validates executable output where appropriate.</p>
 <h3>Why the semantic-only skips matter</h3>
-<p>Those 26 cases are not swept under the rug. They explicitly mark programs whose syntax can be transpiled but whose type correctness lies beyond tscc's current checker slice. Ten semantic contracts now pass, adding typed call arguments, arity and annotated returns to primitive expressions, assignment and const mutability.</p>
+<p>Those 24 cases are not swept under the rug. They explicitly mark programs whose syntax can be emitted but whose type correctness lies beyond the current checker slice. Supported semantic cases now cover bounded primitives, unions/narrowing, structural objects, callable/contextual expressions, index and call signatures, arrays, tuples and relative cross-module type propagation.</p>
+<h2>Compiler-preview candidate gate</h2>
+<p>TCP5 rebuilds from a committed archive, runs focused and independent gates under ASan/UBSan, executes 400 deterministic malformed mutations, checks representative projects and applies a loose startup guardrail. The frozen runtime-intersection source compiles with production tscc and returns the explicit expected value 42 under both Node and JS++.</p>
+<div class="call"><strong>No anti-agreement shortcut:</strong><p>Node and JS++ are not allowed to validate one another merely by matching. The intersection carries explicit expected results, and JS++ remains test-only rather than a compiler dependency.</p></div>
 <h2>The checker gate</h2>
 <p>Focused checker, type-model and binder tests plus the independent corpus protect primitive declarations/expressions, lexical shadowing, assignment/mutability, catch/loop scopes and static import identity. Unsupported semantic families remain outside the claimed contract rather than being rejected by parser guesses.</p>
 <h2>Parser / AST smoke</h2>

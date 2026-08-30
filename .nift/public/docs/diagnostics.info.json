@@ -1,9 +1,9 @@
 {
-  "name": "docs/modules-tsx",
-  "title": "Modules and TSX",
+  "name": "docs/diagnostics",
+  "title": "Diagnostics",
   "template": "templates/template.html",
-  "content": "content/docs/modules-tsx.html",
-  "output": "public/docs/modules-tsx.html",
+  "content": "content/docs/diagnostics.html",
+  "output": "public/docs/diagnostics.html",
   "minify": true,
   "minify-version": 1,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/docs/modules-tsx.html",
+    "content/docs/diagnostics.html",
     "templates/head.html",
     "templates/sidebar.html",
     "templates/style.css",

@@ -1,0 +1,76 @@
+<div class="doc">@input("templates/sidebar.html")<article>
+<div class="ey">Start</div><h1>Compiler examples</h1>
+<p class="lead">These examples distinguish emitted TypeScript syntax from the bounded families that tscc also checks. They are representative of the current preview contract, not promises of full <code>tsc</code> compatibility.</p>
+<h2>Typed functions and contextual callbacks</h2>
+<pre><code class="language-typescript">type Mapper = (value: number, index?: number) =&gt; string;
+
+const format: Mapper = (value, index = 0) =&gt;
+  `${index}:${value}`;
+
+function apply(value: number, mapper: Mapper): string {
+  return mapper(value, 1);
+}
+
+apply(42, value =&gt; value.toString());</code></pre>
+<p>Callable aliases, annotated callable variables, typed function declarations and direct inline callback expressions participate in bounded argument, arity, parameter and result checking.</p>
+<h2>Structural objects and interfaces</h2>
+<pre><code class="language-typescript">interface Named { name: string; }
+interface Scored extends Named { score: number; }
+
+type Formatter = {
+  prefix?: string;
+  format(value: number): string;
+};
+
+const player: Scored = { name: "Ada", score: 42, active: true };
+const formatter: Formatter = {
+  format(value) { return value.toString(); }
+};</code></pre>
+<p>Required and optional properties, methods, function-valued properties, compatible interface merging and bounded inheritance are checked structurally. Extra source properties are intentionally compatible; excess-property freshness is not implemented.</p>
+<h2>Index and call signatures</h2>
+<pre><code class="language-typescript">interface Scores {
+  [name: string]: number;
+}
+
+interface Parse {
+  (source: string): number;
+}
+
+const scores: Scores = { ada: 42 };
+const answer: number = scores["ada"];
+const parse: Parse = source =&gt; 42;
+parse("answer");</code></pre>
+<p>Exact string keys and bounded string/number index reads are checked. Symbols, overload sets and indexed writes remain outside the slice.</p>
+<h2>Arrays and tuples</h2>
+<pre><code class="language-typescript">const primes: number[] = [2, 3, 5, 7];
+const first: number = primes[0];
+
+const entry: [string, number] = ["answer", 42];
+const label: string = entry[0];
+const value: number = entry[1];
+const width: number = entry.length;</code></pre>
+<p>Contextual literals, numeric reads and <code>length</code> are checked. Array methods, indexed writes, readonly arrays and optional/rest tuples are not implied.</p>
+<h2>Enums, namespaces and parameter properties</h2>
+<pre><code class="language-typescript">enum Mode { Fast, Safe = 3 }
+
+namespace Metrics {
+  export const enabled = true;
+}
+
+class Point {
+  constructor(public x: number, readonly y: number) {}
+}
+
+console.log(Mode.Safe, Metrics.enabled, new Point(20, 22).x);</code></pre>
+<p>These are runtime-bearing emission transforms. Their presence does not mean class or namespace types are fully checked.</p>
+<h2>Cross-module checked types</h2>
+<pre><code class="language-typescript">// model.ts
+export interface Result { value: number; }
+export type Compute = (left: number, right: number) =&gt; Result;
+
+// main.ts
+import { Result, Compute } from "./model.js";
+const add: Compute = (left, right) =&gt; ({ value: left + right });
+const result: Result = add(20, 22);</code></pre>
+<p>TCP3 propagates cloned callable and structural identities through relative named imports. Package resolution, declaration-file libraries, path mappings and unit-global type identity remain outside the preview.</p>
+</article></div>

@@ -1,9 +1,9 @@
 {
-  "name": "docs/modules-tsx",
-  "title": "Modules and TSX",
+  "name": "docs/compiler-examples",
+  "title": "Compiler examples",
   "template": "templates/template.html",
-  "content": "content/docs/modules-tsx.html",
-  "output": "public/docs/modules-tsx.html",
+  "content": "content/docs/compiler-examples.html",
+  "output": "public/docs/compiler-examples.html",
   "minify": true,
   "minify-version": 1,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/docs/modules-tsx.html",
+    "content/docs/compiler-examples.html",
     "templates/head.html",
     "templates/sidebar.html",
     "templates/style.css",

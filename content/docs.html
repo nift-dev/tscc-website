@@ -3,13 +3,14 @@
   <article>
 <div class="ey">Documentation</div>
 <h1>A fast TypeScript compiler with an explicit compatibility boundary.</h1>
-<p class="lead">tscc is an experimental TypeScript compiler written in C++17. Today it is strongest as an extremely low-latency transpiler with substantial language, project, CommonJS and TSX support. It now also contains a separate checker pass and its first intentionally narrow semantic contract.</p>
+<p class="lead">tscc is an experimental TypeScript compiler written in C++17. It combines extremely low-latency transpilation with substantial language, project, CommonJS and TSX support, plus a bounded semantic checker that now spans objects, callables, arrays and tuples.</p>
 <div class="call">
 <strong>Important:</strong> tscc is not yet a drop-in replacement for <code>tsc</code>. The docs distinguish what is implemented, what is tested, and what remains intentionally incomplete.</div>
 <div class="cards">
 <div class="card"><strong>Emit</strong><p>Broad TypeScript erasure plus runtime-bearing transforms.</p></div>
 <div class="card"><strong>Check</strong><p>Bound primitive expressions, assignments and const mutability.</p></div>
 <div class="card"><strong>Goal</strong><p>A production-ready type-checking compiler built in measured slices.</p></div>
+<div class="card"><strong>Preview</strong><p>A qualified Linux compiler candidate at 555/0/24 with a 7/7 runtime intersection.</p></div>
 </div>
 <h2>Compilation pipeline</h2>
 <pre>
@@ -36,6 +37,6 @@ JavaScript / JSX output</code>
 <code>tsc</code> is extraordinarily capable, but startup and project compilation can feel expensive when the desired operation is only “turn this TypeScript syntax into runnable JavaScript”. tscc explores how far a small native compiler can push that latency downward without building on the TypeScript compiler implementation.</p>
 <p>The long-term question is larger: can that compact native foundation grow durable syntax, binding, types and diagnostics without sacrificing the latency advantage that made the experiment worth starting? The <a href="@pathto('docs/roadmap')">roadmap</a> makes that destination and the staged route explicit.</p>
 <h2>Read next</h2>
-<p>Start with <a href="@pathto('docs/getting-started')">Getting started</a>, then use <a href="@pathto('docs/language-support')">Language support</a> and <a href="@pathto('docs/modules-tsx')">Modules &amp; TSX</a> as the current feature contract. <a href="@pathto('docs/battle-tested')">Battle tested</a> explains the independent regression and differential layers; <a href="@pathto('docs/memory-safety')">Memory &amp; resource safety</a> tracks the dedicated lifetime/leak campaign; <a href="@pathto('docs/ai-opinion')">AI opinion</a> gives a deliberately critical assessment.</p>
+<p>Start with <a href="@pathto('docs/getting-started')">Getting started</a> and the practical <a href="@pathto('docs/compiler-examples')">compiler examples</a>. Use <a href="@pathto('docs/language-support')">Language support</a>, <a href="@pathto('docs/modules-tsx')">Modules &amp; TSX</a> and <a href="@pathto('docs/compiler-preview')">the compiler-preview contract</a> as the current boundary. <a href="@pathto('docs/battle-tested')">Battle tested</a> explains the independent evidence.</p>
 </article>
 </div>

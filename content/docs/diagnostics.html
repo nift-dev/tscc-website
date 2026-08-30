@@ -1,0 +1,34 @@
+<div class="doc">@input("templates/sidebar.html")<article>
+<div class="ey">Reference</div><h1>Diagnostics</h1>
+<p class="lead">The preview pins stable TSCC code families, deterministic ordering and machine-friendly non-pretty output. Diagnostic stability is part of the contract, not incidental terminal formatting.</p>
+<h2>Code families</h2>
+<table class="status-table"><thead><tr><th>Family</th><th>Purpose</th><th>Examples</th></tr></thead><tbody>
+<tr><td><code>TSCC0001-0003</code></td><td>CLI contract errors</td><td>unknown option, missing value, incompatible invocation</td></tr>
+<tr><td><code>TSCC1000</code></td><td>Compiler errors</td><td>syntax, resolution and bounded semantic failures</td></tr>
+<tr><td><code>TSCC2000</code></td><td>Warnings</td><td>non-fatal compiler findings</td></tr>
+<tr><td><code>TSCC3001</code></td><td>Project configuration</td><td>unknown <code>compilerOptions</code></td></tr>
+</tbody></table>
+<h2>Non-pretty output</h2>
+<pre><code class="language-plaintext">src/main.ts:3:24 - error TSCC1000: Type 'string' is not assignable to type 'number'.
+const answer: number = "forty-two";
+                       ^^^^^^^^^^^</code></pre>
+<p>Non-pretty output has no ANSI escapes and retains file, line, column, source excerpt and caret. Diagnostics are sorted deterministically so repeat builds and CI logs are stable.</p>
+<h2>Path-specific structural errors</h2>
+<pre><code class="language-typescript">interface Config {
+  server: { port: number };
+}
+
+const config: Config = {
+  server: { port: "8080" }
+};</code></pre>
+<p>Nested structural failures identify the relevant property path instead of collapsing the whole object into an anonymous incompatibility.</p>
+<h2>Callable errors</h2>
+<pre><code class="language-typescript">type Add = (left: number, right: number) =&gt; number;
+const add: Add = (left, right) =&gt; left + right;
+
+add(1);          // arity diagnostic
+add(1, "two");   // argument diagnostic</code></pre>
+<h2>Exit and emit behavior</h2>
+<ul><li>Unknown options and missing option values fail visibly with status 2.</li><li>Default mode emits each successfully prepared file and returns failure when another file is invalid.</li><li><code>--noEmitOnError</code> commits no outputs when any input fails.</li><li><code>--noEmit</code> performs compilation and diagnostics without writing outputs.</li></ul>
+<div class="call"><strong>Known boundary:</strong> individual outputs are staged before rename, but a multi-file rename sequence is not a filesystem transaction.</div>
+</article></div>

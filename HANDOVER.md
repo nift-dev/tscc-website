@@ -302,3 +302,16 @@ Nick's machine; PC0P tracks platform packages; TCP6A introduces classified real-
 project trials; EP6A belongs to JS++ conformance. Do not publish those as passed
 until their evidence exists, and do not broaden website compatibility claims in
 anticipation of them.
+
+## Website preview refresh (2026-08-30)
+
+The public site now consistently presents the TCP0-TCP5 bounded Linux compiler
+preview candidate at 555/0/24 across 579 independent cases plus the 7/7 explicit-
+expectation Node/JS++ runtime intersection. New maintained pages cover compiler
+examples, diagnostic behavior and the exact preview contract.
+
+Keep example prose precise about checked versus emitted-only behavior. In
+particular, runtime transforms do not imply class/namespace semantic checking,
+the JS++ intersection does not imply module support or a production dependency,
+and preview qualification does not imply drop-in tsc compatibility. PC0V, PC0P
+and TCP6A remain future evidence gates.

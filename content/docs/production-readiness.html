@@ -3,7 +3,7 @@
   <article>
     <div class="ey">Status · evidence before labels</div>
     <h1>Is tscc production-ready?</h1>
-    <p class="lead">Not yet as a general TypeScript compiler. It is an unusually capable and well-tested experimental transpiler with an early semantic checker—not a safe drop-in replacement for <code>tsc</code>.</p>
+    <p class="lead">Not yet as a general TypeScript compiler. It is now a qualified bounded Linux compiler-preview candidate with a meaningful semantic checker - still not a safe drop-in replacement for <code>tsc</code>.</p>
 
     <div class="call">
       <strong>Candid verdict:</strong>
@@ -17,14 +17,14 @@
       <li>Relative multi-file discovery, project output layout and cycle de-duplication.</li>
       <li>CommonJS lowering tested against observable <code>tsc</code> runtime behavior.</li>
       <li>TSX preserve mode with dedicated ambiguity and malformed-input coverage.</li>
-      <li>A 521-case independent contract currently at 495 pass, zero fail and 26 explicit semantic skips.</li>
-      <li>A lightweight semantic overlay, bounded binder, durable primitive type store and precedence-aware expression checker.</li>
+      <li>A 579-case independent contract currently at 555 pass, zero fail and 24 explicit semantic skips.</li>
+      <li>Canonical primitive, literal, union, callable, structural object, array and tuple types with bounded contextual and cross-module checking.</li>
       <li>Explicit default emit-on-error, opt-in <code>noEmitOnError</code>, file-local diagnostics and staged individual output replacement.</li>
-      <li>A clean committed-archive build and full ASan+UBSan run across every test gate at the August 2026 checkpoint.</li>
+      <li>A clean reproducible candidate build, ASan+UBSan, 400 mutations, frozen projects and a 7/7 Node/JS++ runtime intersection.</li>
     </ul>
 
     <h2>Why the answer is still “not yet”</h2>
-    <p>A production TypeScript compiler needs much more than valid JavaScript output. tscc now has bounded binder-owned identity, durable primitive, object and callable type facts, expression/assignment checks, call argument/arity checks and contextual function-result diagnostics. It still lacks broad inference and control-flow analysis, overload resolution, generics, object method/index/class families, library processing and broad semantic diagnostics.</p>
+    <p>A production TypeScript compiler needs much more than valid JavaScript output. tscc now has binder-owned identity, durable primitive/object/callable/array/tuple facts, contextual callbacks, index/call signatures and relative cross-module type propagation. It still lacks broad inference and control-flow analysis, overload resolution, generics, classes, standard-library processing and broad semantic diagnostics.</p>
     <p>Its project layer also has intentionally narrow relative resolution: package and <code>node_modules</code> resolution, path aliases, declaration files and the wider TypeScript configuration surface remain outside the current implementation.</p>
 
     <h2>Operational gaps under active scrutiny</h2>
@@ -38,9 +38,10 @@
     </div>
 
     <h2>What would change this assessment?</h2>
-    <p>The output-policy and clean-sanitizer gates are now established. A release-like candidate still needs an explicit support matrix, sustained adversarial/fuzz evidence, representative real projects, reproducible cross-platform benchmarks and packages, and a much broader clearly bounded semantic contract. Read the <a href="@pathto('docs/roadmap')">living roadmap</a> for the staged route there.</p>
+    <p>The bounded Linux preview candidate now has an explicit support matrix, frozen projects, candidate archives, sanitizer/mutation evidence and the first dual-runtime intersection. Broader adoption still needs external Valgrind confirmation, second-platform packages, classified real-project trials, reproducible cross-platform evidence and a larger semantic contract. Read the <a href="@pathto('docs/compiler-preview')">compiler-preview contract</a> and <a href="@pathto('docs/roadmap')">living roadmap</a>.</p>
     <h2>Compiler preview finish line</h2>
     <p>The next target is not drop-in <code>tsc</code> compatibility. TCP0 freezes the exact supported and excluded matrix plus a multi-file positive project and negative diagnostic sibling. TCP1-TCP5 then pin diagnostics, project/output behavior, semantic closure, the JS++ runtime intersection and reproducible candidate evidence. Any implementation checkpoint must close a failed acceptance item or stay outside the preview milestone.</p>
     <p><strong>TCP0 complete:</strong> the manifest pins ES2022, preserve/esnext/commonjs, JSX preserve, the currently checked primitive/callable/object/array subset, emitted-only transforms and explicit exclusions including package resolution, source maps and declaration emission. Production compilation has no Node, <code>tsc</code> or JS++ dependency.</p>
+    <p><strong>TCP1-TCP5 complete:</strong> diagnostics, output policy, cross-module semantic closure, the 7/7 runtime intersection and reproducible candidate evidence now qualify the bounded Linux preview. This changes the evidence level, not the explicit non-goal of drop-in <code>tsc</code> compatibility.</p>
   </article>
 </div>

@@ -1,9 +1,9 @@
 {
-  "name": "docs/modules-tsx",
-  "title": "Modules and TSX",
+  "name": "docs/compiler-preview",
+  "title": "Compiler preview contract",
   "template": "templates/template.html",
-  "content": "content/docs/modules-tsx.html",
-  "output": "public/docs/modules-tsx.html",
+  "content": "content/docs/compiler-preview.html",
+  "output": "public/docs/compiler-preview.html",
   "minify": true,
   "minify-version": 1,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/docs/modules-tsx.html",
+    "content/docs/compiler-preview.html",
     "templates/head.html",
     "templates/sidebar.html",
     "templates/style.css",
