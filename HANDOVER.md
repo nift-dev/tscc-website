@@ -283,3 +283,7 @@ emit policies. Multi-file rename is still not a filesystem transaction.
 Post-TCP2 order is TCP3 semantic closure led by cross-module types, TCP4's
 module-free JS++ intersection, then TCP5 evidence. Do not imply JS++ module
 loading or promote unrelated broad language families.
+
+TCP3 is complete. The roadmap records relative named-import propagation of
+cloned callable and structural types, including the unit-local type identity
+boundary and frozen cross-module negative evidence.
