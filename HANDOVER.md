@@ -315,3 +315,20 @@ particular, runtime transforms do not imply class/namespace semantic checking,
 the JS++ intersection does not imply module support or a production dependency,
 and preview qualification does not imply drop-in tsc compatibility. PC0V, PC0P
 and TCP6A remain future evidence gates.
+
+## AI assessment and development-process refresh (2026-08-30)
+
+`docs/ai-opinion` now reassesses TSCC after TCP5 rather than preserving the old
+primitive-checker view. Semantic checking is rated 4.3 (up from 1.4), while the
+drop-in `tsc` score is 3.5 (down from 5.6) because package resolution, declaration
+libraries, broader configuration and semantic completeness dominate arbitrary
+project adoption. A separate 6.5 CI/release-readiness score keeps evidence
+automation distinct from regression design.
+
+`docs/ai-development` now treats multi-repository topology as part of the
+evidence contract. The 2026-08-30 GitHub run checked out only TSCC while `make
+test` expected `../tscc-regression-suite`, so Linux/macOS failed before compiler
+testing and Windows `test-core` passed. Describe this as an evidence-orchestration
+defect, not a compiler regression. Remove or update the dated incident discussion
+after CI explicitly provisions a pinned suite and a clean rerun passes; do not
+leave a resolved red-run assessment frozen forever.

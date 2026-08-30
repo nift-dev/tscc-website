@@ -1,88 +1,106 @@
 <div class="doc">
   @input("templates/sidebar.html")
   <article>
-    <div class="ey">Process · AI-assisted compiler development</div>
-    <h1>Fast iteration. Slow claims. Independent oracles.</h1>
-    <p class="lead">AI can explore TypeScript grammar and compiler architecture at exceptional speed. That is useful only when every proposed semantic slice is bounded, compared with TypeScript where appropriate, executed when runtime behavior matters and retained as evidence in an independent suite.</p>
+<div class="ey">Process · AI-assisted compiler development</div>
+<h1>Fast iteration. Slow claims. Reproducible evidence.</h1>
+<p class="lead">AI can explore grammar, architecture and tests at exceptional speed. TSCC turns that speed into engineering by bounding every checkpoint, separating evidence categories, retaining exact repository heads and requiring clean tools to reproduce the claimed result.</p>
+<div class="call"><strong>The central rule:</strong><p>Use AI to increase the number and quality of hypotheses tested per checkpoint. Never use it to lower the evidence required to call the compiler correct.</p></div>
 
-    <div class="call"><strong>The central rule:</strong><p>Parser acceptance is not feature support. An AI-generated patch must survive the entire path required by its claim: syntax, structure, binding where needed, checking, lowering, emission, runtime behavior, diagnostics and malformed neighbors.</p></div>
+<h2>One checkpoint is a claim plus an evidence graph</h2>
+<p>A checkpoint is not “the agent edited some files and tests looked green.” It states one bounded observable contract, names the repositories and tools needed to prove it, records exact heads and requires every dependent evidence path to pass.</p>
+<pre><code class="language-plaintext">bounded claim
+  ├─ focused compiler tests
+  ├─ independent regression cases
+  ├─ TypeScript oracle classification
+  ├─ emitted-output inspection
+  ├─ runtime execution where observable
+  ├─ sanitizer / mutation / lifetime evidence
+  └─ docs + handover reconciliation</code></pre>
+<p>The compiler, regression suite, JS++ runtime and websites are separate products and repositories. Their test relationship must be explicit. A sibling directory that happens to exist in one developer workspace is not a declared dependency.</p>
 
-    <h2>Institutional memory lives with the repositories</h2>
-    <p>The compiler, independent regression suite and website each carry a root <code>HANDOVER.md</code>. Deeper living documents cover architecture, development, testing, decisions, roadmap and history. Together they preserve current identity, exact boundaries, implementation hazards, validation commands, unresolved questions and the reasoning behind architectural choices.</p>
-    <p>Handovers are orientation maps—not scripture. Every new developer or coding agent must reconcile them against current source, tests, Git history and observed behavior. When a checkpoint changes the truth, the relevant handover and roadmap change with it.</p>
+<h2>Repository handovers preserve decisions, not truth by decree</h2>
+<p>Each repository carries a root <code>HANDOVER.md</code>. Deeper living documents record architecture, preview contracts, evidence, roadmap and history. They preserve why a boundary exists, which commands establish it, what remains unsupported and which repository owns each artifact.</p>
+<p>Handovers are orientation maps, not scripture. Every developer or coding agent reconciles them against source, tests, Git history and observed behavior. When evidence changes the truth, source documentation and generated websites change in the same checkpoint.</p>
 
-    <h2>A vertical-slice workflow</h2>
-    <pre><code class="language-plaintext">state one narrow compatibility contract
+<h2>The vertical-slice loop</h2>
+<pre><code class="language-plaintext">state one compatibility contract
         ↓
-query tsc / tsc --noCheck deliberately
+classify it: syntax, emit, runtime, semantics or tooling
         ↓
-add independent + focused tests first
+query tsc / tsc --noCheck with pinned options
         ↓
-implement every required compiler stage
+add independent positive and negative cases
         ↓
-inspect emitted JavaScript and diagnostics
+implement every compiler stage the claim requires
+        ↓
+inspect output, diagnostics and ownership
         ↓
 execute runtime-bearing fixtures
         ↓
-stress scope, side effects and malformed neighbors
+stress scope, order, side effects and malformed neighbors
         ↓
-run the full regression wall
+run clean + sanitizer + aggregate gates
         ↓
 reconcile performance, docs, handovers and roadmap</code></pre>
 
-    <h2>The independent suite is an arbiter, not a marketing counter</h2>
-    <p>The 519-case compiler-agnostic corpus asks <code>tsc --noCheck</code> whether syntax is accepted, uses full <code>tsc</code> to distinguish semantic-only failures, and runs emitted JavaScript when observable behavior is the contract. Its current 492 pass, zero fail and 27 semantic skips are categories of evidence—not a percentage-complete TypeScript implementation.</p>
-    <p>The semantic campaign illustrates the desired migration: seven previously skipped contracts are genuine passes, binder identity protects CommonJS behavior, and 27 unsupported semantic cases remain honest skips. The same investigation found a semicolonless-import boundary bug that immediately became an independent permanent contract. AI development should keep turning precisely defined gaps into owned behavior one slice at a time.</p>
+<h2>Evidence categories prevent false progress</h2>
+<div class="cards">
+<div class="card"><strong>Syntax</strong><p><code>tsc --noCheck</code> establishes whether a form belongs to accepted TypeScript grammar. Acceptance alone promises neither checking nor correct output.</p></div>
+<div class="card"><strong>Emission</strong><p>Erasure and transforms must produce the promised JS/JSX shape while preserving evaluation order, scope and module behavior.</p></div>
+<div class="card"><strong>Semantics</strong><p>Only explicitly promoted checker slices promise type diagnostics. Other full-tsc failures remain visible semantic skips.</p></div>
+<div class="card"><strong>Operation</strong><p>CLI status, diagnostics, deterministic paths, emit policy, packaging and clean-checkout behavior are compiler contracts too.</p></div>
+</div>
+<p>This prevents a plausible AI patch from “implementing” a missing checker by rejecting legal grammar, or from calling a transform complete because the output merely parses.</p>
 
-    <h2>Contract-based testing: define what tscc owns</h2>
-    <p>A compiler test becomes a contract test when it describes observable language or tool behavior without encoding the current parser helper, token-range layout or emitter strategy. The same case should remain meaningful if tscc later replaces a heuristic with binder identity or evolves from source edits toward richer semantic structure.</p>
-    <pre><code class="language-plaintext">source + compiler options
-        ↓
-accept or reject for the documented reason
-        ↓
-emit the promised JS/JSX shape where shape matters
-        ↓
-preserve runtime behavior and module semantics
-        ↓
-produce stable, attributed diagnostics where required</code></pre>
+<h2>The independent suite is an arbiter, not a percentage</h2>
+<p>The current compiler-agnostic corpus has 579 cases: 555 pass, zero current-scope failures and 24 intentional semantic skips. Those numbers classify the bounded contract. They do not mean TSCC is 95.9% of TypeScript.</p>
+<p><code>tsc --noCheck</code> arbitrates syntax, full <code>tsc</code> identifies semantic-only differences and Node executes eligible output. The separate 7/7 Node/JS++ intersection requires explicit expected values and includes an anti-agreement self-test: two runtimes returning the same wrong answer still fail.</p>
 
-    <h3>Not every accepted program has the same contract</h3>
-    <div class="cards">
-      <div class="card"><strong>Syntax</strong><p><code>tsc --noCheck</code> says whether a form belongs to accepted TypeScript grammar; acceptance alone does not promise checking.</p></div>
-      <div class="card"><strong>Emission</strong><p>Erasure and transforms must produce valid output with correct evaluation order, bindings and module behavior.</p></div>
-      <div class="card"><strong>Semantics</strong><p>Only explicitly owned checker slices promise a type diagnostic. Other full-tsc failures remain visible semantic skips.</p></div>
-    </div>
+<h3>Promotion is how semantic support grows</h3>
+<p>A semantic skip becomes a pass only when TSCC owns that slice end to end with durable structure, positive acceptance/runtime cases, negative diagnostics and relevant neighbors. This process has grown from primitives into literals/unions, bounded narrowing, callable expressions, contextual callbacks, structural objects, index/call signatures, arrays, tuples and relative named-import type propagation while retaining 24 honest skips.</p>
 
-    <h3>The contract matrix prevents category errors</h3>
-    <p>Each case can state which evidence applies: parser acceptance/rejection, output constraints, runtime result, diagnostic category/location, project graph behavior or semantic-only classification. This prevents an AI assistant from “fixing” a missing type checker by teaching the parser to reject valid syntax, or from calling a transform complete because its output merely parses.</p>
+<h3>Reference behavior is queried deliberately</h3>
+<p><code>tsc --noCheck</code>, full <code>tsc</code>, module mode, JSX mode, target and TypeScript version answer different questions. Fixtures pin enough context to make comparison meaningful. Oracle upgrades are classified across the suite rather than accepted one surprising case at a time.</p>
 
-    <h3>Reference behavior is queried, not worshipped blindly</h3>
-    <p>TypeScript is the compatibility oracle for the intended surface, but the invocation matters. <code>tsc --noCheck</code>, full <code>tsc</code>, module mode, JSX mode, target and TypeScript version answer different questions. Contract fixtures record enough context to make the comparison meaningful, and oracle upgrades are classified across the whole suite rather than accepted case by case.</p>
+<h2>Durable architecture must replace successful temporary paths</h2>
+<p>AI can extend a heuristic quickly enough that it appears permanent. TSCC’s checkpoint discipline instead asks when a temporary path should be retired. One production <code>ProgramGraph</code> replaced parallel file traversal; <code>CompilationUnit</code> retains per-file state; stable syntax/expression identity replaced repeated token rediscovery; the type-annotation parser was decomposed; and canonical types replaced ad-hoc facts.</p>
+<p>Architecture checkpoints do not automatically increase language-support counts. That distinction is valuable: internal ownership work can be accepted for reducing future risk without being marketed as compatibility.</p>
 
-    <h3>Promotion is how semantic support grows</h3>
-    <p>A semantic skip is a recorded future contract, not a hidden failure. It becomes a pass only when tscc deliberately owns that language slice end to end with positive cases, negative diagnostics and relevant neighboring behavior. The primitive annotation/literal checkpoint is the model: define the boundary, implement a distinct checker path, promote exactly the covered case and leave unrelated semantics honest.</p>
+<h2>Clean-checkout reproducibility is part of correctness</h2>
+<p>Today’s GitHub failure demonstrates why. Linux and macOS run <code>make test</code>, whose preview validator is referenced as <code>../tscc-regression-suite/validate_preview_contract.py</code>. The workflow checks out only TSCC, so both jobs fail before testing. Windows runs the self-contained <code>test-core</code> target and passes.</p>
+<pre><code class="language-plaintext">developer aggregate workspace
+├── tscc/
+└── tscc-regression-suite/   ← sibling happens to exist
 
-    <h3>Contract changes require reconciliation</h3>
-    <p>If tscc intentionally diverges from <code>tsc</code>, narrows a previously claimed surface or changes emitted/runtime behavior, that is not a test-only edit. The compiler contract, suite classification, README, website, handovers and compatibility/version statement must agree before the checkpoint is complete.</p>
+isolated CI checkout
+└── tscc/                    ← make test cannot find sibling</code></pre>
+<p>This is not evidence of a compiler defect, but it is an evidence-system defect. A serious multi-repository gate must declare and pin its topology. Valid approaches include checking out the sibling suite at a reviewed revision, consuming a versioned suite artifact, or keeping <code>test-core</code> self-contained while an explicitly provisioned aggregate workflow owns cross-repository validation.</p>
+<div class="call"><strong>Rule:</strong><p>Never weaken an aggregate test merely to make isolated CI green. Provision its dependencies explicitly, pin them, and rerun from a clean environment.</p></div>
 
-    <h2>Testing is deliberately redundant</h2>
-    <div class="cards">
-      <div class="card"><strong>Focused C++</strong><p>Lexer, parser and checker tests localize token ranges, structural ownership and diagnostic failures.</p></div>
-      <div class="card"><strong>Runtime differential</strong><p>tscc and tsc outputs are executed and compared for enums, namespaces, parameter properties and modules.</p></div>
-      <div class="card"><strong>Project gates</strong><p>Multi-file graphs, cycles, TSX resolution, output layout and CommonJS live bindings exercise orchestration.</p></div>
-    </div>
-    <p>Performance fixtures protect the original native-latency objective. Sanitizers, fuzzing, stress tests and real projects become increasingly important as durable syntax, binding and type state expand memory and lifetime complexity.</p>
+<h2>Candidate evidence must be reproducible, not narrated</h2>
+<p>TCP5 qualifies the bounded Linux preview with committed-archive builds, deterministic outputs and diagnostics, frozen positive/negative projects, both emit policies, ASan/UBSan, 400 deterministic mutations, a representative project, a loose startup guardrail and reproducible candidate archives. PC0V remains external because the managed runner cannot supply the required leak instrumentation.</p>
+<p>Unavailable evidence is recorded as unavailable. A tool that cannot start is not a product pass or fail. Later Valgrind work must record exact repository heads, platform/tool versions, commands, exit codes and leak/error summaries.</p>
 
-    <h2>Why scope and side effects dominate good tests</h2>
-    <p>Compiler bugs hide behind easy literals. Tests use mutation counters, calls, getters, computed properties, short-circuiting, nested functions, parameter/block/catch/loop shadowing and module cycles. A transform must preserve evaluation count, order and binding identity—not merely emit JavaScript that parses.</p>
+<h2>AI is useful in different roles</h2>
+<table class="status-table"><thead><tr><th>Role</th><th>Good use</th><th>Required control</th></tr></thead><tbody>
+<tr><td>Explorer</td><td>Generate ambiguity matrices and competing designs.</td><td>Reduce each proposal to a falsifiable contract.</td></tr>
+<tr><td>Implementer</td><td>Carry one slice through parser, model, checker and emitter.</td><td>Focused and independent tests precede the support claim.</td></tr>
+<tr><td>Adversary</td><td>Find malformed neighbors, scope collisions and side effects.</td><td>Confirm syntax classifications with the pinned oracle.</td></tr>
+<tr><td>Reviewer</td><td>Compare claims with diffs, source and retained evidence.</td><td>Do not accept the implementation agent’s summary as proof.</td></tr>
+<tr><td>Historian</td><td>Keep matrices, docs, handovers and roadmaps synchronized.</td><td>Search for stale counts and superseded limitations.</td></tr>
+</tbody></table>
 
-    <h2>Checkpoints keep the long-term goal honest</h2>
-    <p>The destination is a production-ready TypeScript type-checking compiler. The route is not a big-bang rewrite. Each checkpoint protects the working transpiler, adds the minimum durable structure required by a complete semantic slice, measures cost and lets the evidence determine the next abstraction.</p>
-    <p>A checkpoint is not automatically a version, release, production claim or push. Those are separate decisions. Website claims are updated only after implementation and regression evidence settle.</p>
+<h2>Why scope and side effects dominate strong tests</h2>
+<p>Compiler bugs hide behind easy literals. Cases use mutation counters, calls, getters, computed properties, short-circuiting, nested callbacks, parameter/block/catch/loop shadowing, re-exports and module cycles. Correct JavaScript must preserve evaluation count, order and binding identity - not merely parse.</p>
 
-    <h2>Where AI helps—and where it can mislead</h2>
-    <p>AI is excellent at generating ambiguity matrices, shrinking failures, tracing interacting passes and keeping source, tests, website and handovers synchronized. It is also excellent at producing convincing special cases that accidentally accept invalid TypeScript or corrupt a neighboring construct. The reference compiler and executable gates are what turn that speed into engineering rather than confident guesswork.</p>
+<h2>Failure is evidence when classified honestly</h2>
+<p>An unsuccessful checkpoint can reveal that the proposed abstraction is premature, the oracle invocation is wrong, a fixture is invalid, a dependency is undeclared or the feature boundary is too broad. The response is not to bury the failure under more special cases. Minimize it, classify the responsible layer, update the plan and retain a permanent reproducer where it describes product behavior.</p>
 
-    <div class="call"><strong>The development philosophy:</strong><p>Use AI to increase the number and quality of hypotheses tested per checkpoint. Never use it to lower the amount of evidence required to call the compiler correct.</p></div>
+<h2>The post-preview phase changes the AI strategy</h2>
+<p>TCP0-TCP5 proved that the checkpoint method can reach a bounded compiler candidate. The next phase should use fewer roadmap-driven features and more evidence-driven selection:</p>
+<ol><li>repair and rerun clean multi-platform CI;</li><li>collect PC0V external lifetime evidence;</li><li>run TCP6A against pinned real small projects;</li><li>classify parser, binder, checker, resolution, configuration, emit and runtime failures;</li><li>choose the smallest vertical slices that unlock meaningful projects.</li></ol>
+<p>This is how the project avoids checkpoint eternity. Checkpoints remain the unit of work, but real adoption evidence - not the desire to keep adding features - chooses their content.</p>
+
+<div class="call"><strong>The development philosophy:</strong><p>Move quickly between hypotheses. Move slowly between evidence and public claims. Make every important result reproducible without the original agent’s workspace.</p></div>
   </article>
 </div>
