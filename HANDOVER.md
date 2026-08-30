@@ -262,3 +262,10 @@ across 573 cases; do not imply a complete statement AST yet.
 Public evidence is 555/0/24 across 579 cases. The site may claim bounded `T[]`
 and fixed tuple annotations, contextual literals, numeric reads and length.
 Readonly/optional/rest tuples, methods and indexed writes remain out of scope.
+
+## Compiler preview contract gate (2026-08-30)
+
+Roadmap and production-readiness pages now publish TCP0-TCP5 and the frozen
+positive/negative project as the bounded preview finish line. Keep this wording
+synchronized with `tscc/docs/COMPILER-PREVIEW.md`; it is not a drop-in `tsc`
+compatibility claim.
