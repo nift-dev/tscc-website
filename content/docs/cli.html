@@ -33,6 +33,8 @@ tscc --module commonjs src/main.ts</code>
 <p>Current project configuration supports practical fields such as <code>rootDir</code>, <code>outDir</code>, <code>target</code>, <code>module</code>, <code>jsx</code>, <code>removeComments</code>, <code>noEmit</code>, <code>noEmitOnError</code>, <code>files</code>, <code>include</code> and <code>exclude</code>. JSONC comments and trailing commas are accepted.</p>
 <h2>Unknown options</h2>
 <p>Unsupported CLI options fail rather than silently pretending to implement TypeScript behavior. That is an intentional compatibility rule: explicit incompleteness is safer than a green command that ignored a meaningful compiler setting.</p>
+<h2>Diagnostic contract</h2>
+<p>TCP1 assigns stable <code>TSCC</code> codes and deterministic ordering. CLI contract errors use <code>TSCC0001</code>-<code>TSCC0003</code>, ordinary compiler errors currently use <code>TSCC1000</code>, and warnings use <code>TSCC2000</code>. Non-pretty output retains file, line, column, source excerpt and caret without ANSI escapes. Missing option values fail explicitly with status 2.</p>
 <h2>Current output policy</h2>
 <p>Each source is prepared with file-local diagnostics before output policy is applied. Default mode writes every successfully prepared file and still returns failure when another input is invalid. <code>--noEmitOnError</code> (or the matching tsconfig option) writes none when any input fails; <code>--noEmit</code> always writes none. Individual outputs are staged beside their destinations before rename, but the multi-file rename sequence is not a filesystem transaction.</p>
 <h2>Compatibility is deliberate, not cosmetic</h2>

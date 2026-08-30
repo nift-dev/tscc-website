@@ -272,3 +272,6 @@ compatibility claim.
 
 TCP0 is public: machine-readable checked-versus-emitted classification, frozen
 positive/negative projects and an explicit dependency-free production boundary.
+
+TCP1 may be claimed as stable TSCC code families, deterministic ordering, pinned
+non-pretty output and explicit CLI contract failures.
