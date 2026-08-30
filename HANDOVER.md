@@ -275,3 +275,7 @@ positive/negative projects and an explicit dependency-free production boundary.
 
 TCP1 may be claimed as stable TSCC code families, deterministic ordering, pinned
 non-pretty output and explicit CLI contract failures.
+
+TCP2 may claim enforced ES2022/module/JSX boundaries, sorted project roots,
+byte-identical repeated builds, visible unknown-option failure and both documented
+emit policies. Multi-file rename is still not a filesystem transaction.
