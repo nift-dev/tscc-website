@@ -287,3 +287,7 @@ loading or promote unrelated broad language families.
 TCP3 is complete. The roadmap records relative named-import propagation of
 cloned callable and structural types, including the unit-local type identity
 boundary and frozen cross-module negative evidence.
+
+TCP4 is complete at 7/7 independent intersection cases. The frozen source uses
+typed objects, tuples and an ordinary function without modules; production TSCC
+emit returns 42 under Node and JS++. Do not imply JS++ module support.
