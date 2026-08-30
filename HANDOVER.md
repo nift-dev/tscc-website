@@ -256,3 +256,9 @@ tuples, symbols or indexed-write checking.
 Callable statement roots now have semantic-model ownership and the checker no
 longer scans references to rediscover them. Public evidence remains 549/0/24
 across 573 cases; do not imply a complete statement AST yet.
+
+## CP42 canonical arrays and tuples (2026-08-30)
+
+Public evidence is 555/0/24 across 579 cases. The site may claim bounded `T[]`
+and fixed tuple annotations, contextual literals, numeric reads and length.
+Readonly/optional/rest tuples, methods and indexed writes remain out of scope.

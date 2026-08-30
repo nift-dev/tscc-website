@@ -34,6 +34,10 @@ const port: number = "8080";   // diagnostic</code></pre>
 </article>
 <article class="doc-section">
   <h2>Computed element access</h2>
-  <p>Exact string keys and bounded dynamic string/number reads are checked against structural properties and index signatures. Arrays, tuples, symbols and indexed writes remain outside this slice.</p>
+  <p>Exact string keys and bounded dynamic string/number reads are checked against structural properties and index signatures. Symbols and indexed writes remain outside this slice.</p>
+</article>
+<article class="doc-section">
+  <h2>Arrays and tuples</h2>
+  <p>Bounded <code>T[]</code> and fixed heterogeneous tuple annotations have canonical identities, contextual literal checking, numeric reads and typed length. Readonly arrays, optional/rest tuple elements, methods and indexed writes remain planned.</p>
 </article>
 </div>
