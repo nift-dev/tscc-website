@@ -296,3 +296,9 @@ boundary and frozen cross-module negative evidence.
 TCP4 is complete at 7/7 independent intersection cases. The frozen source uses
 typed objects, tuples and an ordinary function without modules; production TSCC
 emit returns 42 under Node and JS++. Do not imply JS++ module support.
+
+The next work is evidence-first. PC0V Valgrind confirmation will happen later on
+Nick's machine; PC0P tracks platform packages; TCP6A introduces classified real-
+project trials; EP6A belongs to JS++ conformance. Do not publish those as passed
+until their evidence exists, and do not broaden website compatibility claims in
+anticipation of them.
