@@ -244,3 +244,9 @@ function types. Do not imply computed access, overload sets, mapped or generics.
 The annotation grammar now has a dedicated parser boundary with decomposed
 productions. Public support remains 545/0/24 across 569 cases; this is an
 architecture checkpoint and must not be presented as new language coverage.
+
+## CP40 computed element access (2026-08-30)
+
+Public evidence is 549/0/24 across 573 cases. The site may claim exact string
+property and bounded string/number index-signature reads. Do not imply arrays,
+tuples, symbols or indexed-write checking.

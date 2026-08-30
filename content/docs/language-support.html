@@ -32,4 +32,8 @@ const port: number = "8080";   // diagnostic</code></pre>
 <div class="call">
 <strong>Practical consequence:</strong> outside the explicitly implemented primitive slice, a program can transpile successfully with tscc and still be rejected by full <code>tsc</code>. The independent suite tracks those as semantic-only skips rather than false parser failures.</div>
 </article>
+<article class="doc-section">
+  <h2>Computed element access</h2>
+  <p>Exact string keys and bounded dynamic string/number reads are checked against structural properties and index signatures. Arrays, tuples, symbols and indexed writes remain outside this slice.</p>
+</article>
 </div>
