@@ -269,3 +269,6 @@ Roadmap and production-readiness pages now publish TCP0-TCP5 and the frozen
 positive/negative project as the bounded preview finish line. Keep this wording
 synchronized with `tscc/docs/COMPILER-PREVIEW.md`; it is not a drop-in `tsc`
 compatibility claim.
+
+TCP0 is public: machine-readable checked-versus-emitted classification, frozen
+positive/negative projects and an explicit dependency-free production boundary.
