@@ -284,6 +284,11 @@ Post-TCP2 order is TCP3 semantic closure led by cross-module types, TCP4's
 module-free JS++ intersection, then TCP5 evidence. Do not imply JS++ module
 loading or promote unrelated broad language families.
 
+TCP5 may claim a bounded Linux compiler preview candidate at 555/0/24 and 7/7
+runtime intersection, with frozen/representative projects, ASan/UBSan, 400
+mutations, a loose startup guardrail and reproducible archives. It must not claim
+drop-in `tsc` compatibility; leak checking remains external under ptrace.
+
 TCP3 is complete. The roadmap records relative named-import propagation of
 cloned callable and structural types, including the unit-local type identity
 boundary and frozen cross-module negative evidence.
