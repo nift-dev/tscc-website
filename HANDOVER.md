@@ -238,3 +238,9 @@ that every statement form yet owns durable expression children.
 Public evidence is 545/0/24 across 569 cases. Bounded string/number index
 signatures and single callable object signatures share canonical structural and
 function types. Do not imply computed access, overload sets, mapped or generics.
+
+## CP39 annotation parser decomposition (2026-08-30)
+
+The annotation grammar now has a dedicated parser boundary with decomposed
+productions. Public support remains 545/0/24 across 569 cases; this is an
+architecture checkpoint and must not be presented as new language coverage.

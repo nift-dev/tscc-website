@@ -50,4 +50,8 @@ CLI             tsc-like user boundary</code>
 <p>The first integration will be test-only, running eligible tscc output under Node and JS++. CommonJS lowering remains a compiler transform in tscc; ECMAScript module execution belongs to JS++.</p>
 <p>JS++ has now reached its first bounded primitive bytecode/VM slice, but tscc dual-runtime execution is not active yet. Selecting and classifying the emitted-JavaScript intersection remains a separate integration checkpoint.</p>
 </article>
+<article class="doc-section">
+  <h2>Dedicated type-annotation parser</h2>
+  <p>Object members, function annotations, index signatures, call signatures and unions enter the canonical type store through a decomposed annotation parser. This keeps grammar growth separate from type identity and checking.</p>
+</article>
 </div>
