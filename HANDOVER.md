@@ -250,3 +250,9 @@ architecture checkpoint and must not be presented as new language coverage.
 Public evidence is 549/0/24 across 573 cases. The site may claim exact string
 property and bounded string/number index-signature reads. Do not imply arrays,
 tuples, symbols or indexed-write checking.
+
+## CP41 durable statement expressions (2026-08-30)
+
+Callable statement roots now have semantic-model ownership and the checker no
+longer scans references to rediscover them. Public evidence remains 549/0/24
+across 573 cases; do not imply a complete statement AST yet.
