@@ -279,3 +279,7 @@ non-pretty output and explicit CLI contract failures.
 TCP2 may claim enforced ES2022/module/JSX boundaries, sorted project roots,
 byte-identical repeated builds, visible unknown-option failure and both documented
 emit policies. Multi-file rename is still not a filesystem transaction.
+
+Post-TCP2 order is TCP3 semantic closure led by cross-module types, TCP4's
+module-free JS++ intersection, then TCP5 evidence. Do not imply JS++ module
+loading or promote unrelated broad language families.
